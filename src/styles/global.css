@@ -1,0 +1,39 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bg: #0a0a0a;
+  --color-bg-card: #111111;
+  --color-bg-elevated: #1a1a1a;
+  --color-text: #e0e0e0;
+  --color-text-muted: #888888;
+  --color-text-heading: #ffffff;
+  --color-accent-red: #ff3e3e;
+  --color-accent-teal: #00d4aa;
+  --color-accent-gold: #ffd93d;
+  --color-accent-purple: #6c5ce7;
+  --color-accent-cyan: #00b4d8;
+  --color-border: #222222;
+  --font-heading: "Clash Display", "Satoshi", sans-serif;
+  --font-body: "Satoshi", sans-serif;
+}
+
+html {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background-color: var(--color-accent-red);
+  color: white;
+}
+
+canvas {
+  max-width: 100%;
+}

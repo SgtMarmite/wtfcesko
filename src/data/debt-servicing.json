@@ -1,0 +1,20 @@
+{
+  "title": "Náklady na obsluhu dluhu",
+  "description": "Čisté výdaje na obsluhu státního dluhu (mld. Kč)",
+  "source": {
+    "name": "MF ČR — Čisté výdaje na obsluhu státního dluhu",
+    "url": "https://mf.gov.cz/cs/rozpoctova-politika/rizeni-statniho-dluhu/statistiky/ciste-vydaje-na-obsluhu-statniho-dluhu"
+  },
+  "labels": [
+    "2000", "2002", "2004", "2006", "2008", "2010", "2012",
+    "2014", "2016", "2018", "2020", "2021", "2022", "2023", "2024"
+  ],
+  "datasets": [
+    {
+      "label": "Úrokové výdaje (mld. Kč)",
+      "data": [17.41, 18.95, 26.83, 31.61, 37.66, 35.84, 41.40, 48.49, 40.65, 40.73, 40.15, 42.23, 49.71, 68.32, 88.46],
+      "type": "bar",
+      "color": "#00b4d8"
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = "Co se stalo s českou ekonomikou?" } = Astro.props;
+---
+
+<!doctype html>
+<html lang="cs" class="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link
+      href="https://api.fontshare.com/v2/css?f[]=clash-display@700&f[]=satoshi@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <title>{title}</title>
+  </head>
+  <body class="bg-bg min-h-screen overflow-x-hidden">
+    <slot />
+  </body>
+</html>

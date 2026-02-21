@@ -1,0 +1,47 @@
+---
+interface Props {
+  id: string;
+  title: string;
+  description: string;
+  accentColor?: string;
+  source: string;
+  sourceUrl: string;
+}
+
+const { id, title, description, accentColor = "#ff3e3e", source, sourceUrl } = Astro.props;
+---
+
+<section id={id} class="relative py-24 md:py-32 px-6">
+  <div class="max-w-5xl mx-auto">
+    <div class="mb-12 md:mb-16 max-w-2xl">
+      <div class="w-12 h-1 mb-6" style={`background-color: ${accentColor};`}></div>
+      <h2 class="font-heading text-text-heading text-3xl md:text-5xl font-bold mb-4 leading-tight">
+        {title}
+      </h2>
+      <p class="text-text-muted text-base md:text-lg leading-relaxed">
+        {description}
+      </p>
+    </div>
+
+    <div
+      class="chart-container relative bg-bg-card border border-border rounded-2xl p-4 md:p-8 opacity-0 translate-y-8
+             transition-all duration-700 ease-out"
+      data-chart-id={id}
+    >
+      <div class="h-64 md:h-80 lg:h-96">
+        <canvas id={`chart-${id}`}></canvas>
+      </div>
+    </div>
+
+    <div class="mt-4 text-right">
+      <a
+        href={sourceUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="text-text-muted text-xs hover:text-text transition-colors duration-200"
+      >
+        Zdroj: {source} &nearr;
+      </a>
+    </div>
+  </div>
+</section>

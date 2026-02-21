@@ -1,0 +1,20 @@
+{
+  "title": "Nedostupnost bydlení",
+  "description": "Poměr průměrné ceny bytu k průměrnému ročnímu hrubému platu",
+  "source": {
+    "name": "ČSÚ — Ceny nemovitostí",
+    "url": "https://csu.gov.cz/ceny-nemovitosti"
+  },
+  "note": "NEEDS VERIFICATION: Poměr je odhadnut z průměrných cen bytů ČSÚ a průměrných ročních mezd. Přesné ceny bytů je třeba ověřit z ČSÚ publikací cen nemovitostí.",
+  "labels": [
+    "2005", "2007", "2008", "2009", "2010", "2011", "2012", "2013",
+    "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023"
+  ],
+  "datasets": [
+    {
+      "label": "Cena bytu / roční plat",
+      "data": [5.2, 6.8, 6.5, 5.8, 5.5, 5.3, 5.1, 5.0, 5.2, 5.6, 6.2, 7.1, 8.0, 8.8, 9.2, 10.5, 11.2, 10.8],
+      "color": "#ffd93d"
+    }
+  ]
+}

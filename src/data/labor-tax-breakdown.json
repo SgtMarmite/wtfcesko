@@ -1,0 +1,22 @@
+{
+  "title": "Zdanění práce zaměstnance",
+  "description": "Rozklad celkových nákladů zaměstnavatele na průměrnou mzdu (2024)",
+  "source": {
+    "name": "Zákon o daních z příjmů, zákon o pojistném na SZ a ZP; mzda ČSÚ via kurzy.cz",
+    "url": "https://www.kurzy.cz/hodnoty/prumerna_mzda_CSU/"
+  },
+  "note": "Průměrná hrubá mzda 2024 = 46 165 Kč. Sazby: zaměstnavatel SP 24.8%, ZP 9%; zaměstnanec SP 6.5%, ZP 4.5%; DPFO 15% se slevou 2 570 Kč/měsíc.",
+  "grossWage": 46165,
+  "totalCost": 61769,
+  "labels": [
+    "Čistá mzda",
+    "Daň z příjmu",
+    "SP zaměstnanec",
+    "ZP zaměstnanec",
+    "SP zaměstnavatel",
+    "ZP zaměstnavatel"
+  ],
+  "data": [36732, 4355, 3001, 2077, 11449, 4155],
+  "percentages": [59.5, 7.1, 4.9, 3.4, 18.5, 6.7],
+  "colors": ["#00d4aa", "#ff3e3e", "#ff8c42", "#ffd93d", "#6c5ce7", "#00b4d8"]
+}

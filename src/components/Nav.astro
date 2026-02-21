@@ -1,0 +1,64 @@
+---
+const sections = [
+  { id: "hero", label: "Úvod" },
+  { id: "kupni-sila", label: "Kupní síla" },
+  { id: "bydleni", label: "Bydlení" },
+  { id: "najmy", label: "Nájmy" },
+  { id: "vystavba", label: "Výstavba" },
+  { id: "demografie", label: "Demografie" },
+  { id: "duchody", label: "Důchody" },
+  { id: "vydaje-duchody", label: "Výdaje důchody" },
+  { id: "statni-dluh", label: "Státní dluh" },
+  { id: "zdaneni-prace", label: "Zdanění práce" },
+  { id: "obsluha-dluhu", label: "Obsluha dluhu" },
+  { id: "dane-cas", label: "Daně v čase" },
+  { id: "dane", label: "Daně srovnání" },
+];
+---
+
+<nav class="fixed right-4 md:right-8 top-1/2 -translate-y-1/2 z-50 hidden md:flex flex-col gap-2" aria-label="Navigace sekcí">
+  {sections.map((s) => (
+    <a
+      href={`#${s.id}`}
+      class="nav-dot group relative flex items-center justify-end"
+      data-section={s.id}
+      aria-label={s.label}
+    >
+      <span class="opacity-0 group-hover:opacity-100 transition-opacity duration-200
+                    text-text text-xs mr-3 whitespace-nowrap pointer-events-none">
+        {s.label}
+      </span>
+      <span class="block w-2.5 h-2.5 rounded-full border border-text-muted bg-transparent
+                    transition-all duration-300 group-hover:border-accent-red
+                    group-hover:bg-accent-red/30">
+      </span>
+    </a>
+  ))}
+</nav>
+
+<script>
+  const dots = document.querySelectorAll<HTMLAnchorElement>('.nav-dot');
+  const sections = Array.from(dots).map(d => d.dataset.section!);
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        dots.forEach(dot => {
+          const inner = dot.querySelector('span:last-child') as HTMLElement;
+          if (dot.dataset.section === entry.target.id) {
+            inner.style.backgroundColor = 'var(--color-accent-red)';
+            inner.style.borderColor = 'var(--color-accent-red)';
+          } else {
+            inner.style.backgroundColor = 'transparent';
+            inner.style.borderColor = '';
+          }
+        });
+      }
+    });
+  }, { threshold: 0.3 });
+
+  sections.forEach(id => {
+    const el = document.getElementById(id);
+    if (el) observer.observe(el);
+  });
+</script>

@@ -1,0 +1,591 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Hero from "../components/Hero.astro";
+import ChartSection from "../components/ChartSection.astro";
+import Nav from "../components/Nav.astro";
+import Footer from "../components/Footer.astro";
+import "../styles/global.css";
+
+import inflationData from "../data/inflation-vs-wages.json";
+import housingData from "../data/housing-affordability.json";
+import rentData from "../data/rent-vs-wages.json";
+import constructionData from "../data/housing-construction.json";
+import demoData from "../data/demographics.json";
+import pensionData from "../data/pensions-vs-wages.json";
+import pensionSpendData from "../data/pension-spending.json";
+import debtData from "../data/government-debt.json";
+import debtServiceData from "../data/debt-servicing.json";
+import laborTaxData from "../data/labor-tax-breakdown.json";
+import taxData from "../data/tax-burden.json";
+import taxTimeData from "../data/tax-burden-time.json";
+---
+
+<Layout title="WTF Česko — Co se stalo s českou ekonomikou?">
+  <Nav />
+  <main>
+    <Hero />
+
+    <ChartSection
+      id="kupni-sila"
+      title="Platy rostou. Ale kupní síla?"
+      description="Od roku 1993 nominální mzdy vzrostly 6×. Ceny ale taky. Reálná kupní síla roste pomaleji, než si myslíte — a po roce 2020 se nůžky drasticky rozevřely."
+      accentColor="#00d4aa"
+      source={inflationData.source.name}
+      sourceUrl={inflationData.source.url}
+    />
+
+    <ChartSection
+      id="bydleni"
+      title="Na byt šetříte 11 let"
+      description="V roce 2005 stál průměrný byt 5 ročních platů. Dnes je to přes 10. Celá generace je odstřižená od vlastního bydlení."
+      accentColor="#ffd93d"
+      source={housingData.source.name}
+      sourceUrl={housingData.source.url}
+    />
+
+    <ChartSection
+      id="najmy"
+      title="Půlka výplaty za&nbsp;nájem"
+      description="Podíl průměrného nájmu na čisté mzdě roste. V krajských městech dnes spolkne nájem přes 40 % čisté výplaty — a v Praze ještě víc."
+      accentColor="#e056a0"
+      source={rentData.source.name}
+      sourceUrl={rentData.source.url}
+    />
+
+    <ChartSection
+      id="vystavba"
+      title="Staví se málo, méně než&nbsp;dřív"
+      description="Počet zahájených i dokončených bytů je hluboko pod úrovní potřebnou k pokrytí poptávky. Stavební řízení trvá roky, kapacity chybí."
+      accentColor="#00d4aa"
+      source={constructionData.source.name}
+      sourceUrl={constructionData.source.url}
+    />
+
+    <ChartSection
+      id="demografie"
+      title="Děti se nerodí"
+      description="Česko je hluboko pod hranicí prosté reprodukce (2,1 dítěte na ženu). Populace stárne a bez imigrace se bude zmenšovat."
+      accentColor="#6c5ce7"
+      source={demoData.source.name}
+      sourceUrl={demoData.source.url}
+    />
+
+    <ChartSection
+      id="duchody"
+      title="Důchod? Závisí na&nbsp;valorizacích"
+      description="Poměr průměrného důchodu k mzdě se drží kolem 40–45 %. Ale bez politických valorizací by klesal — a každá valorizace zatěžuje rozpočet víc."
+      accentColor="#ff8c42"
+      source={pensionData.source.name}
+      sourceUrl={pensionData.source.url}
+    />
+
+    <ChartSection
+      id="vydaje-duchody"
+      title="Důchody nás stojí stále&nbsp;víc"
+      description="Výdaje na důchody jako podíl HDP stagnují kolem 8 %, ale populace 65+ roste. Systém se blíží bodu zlomu."
+      accentColor="#6c5ce7"
+      source={pensionSpendData.source.name}
+      sourceUrl={pensionSpendData.source.url}
+    />
+
+    <ChartSection
+      id="statni-dluh"
+      title="Dluh, co roste rychleji než&nbsp;ekonomika"
+      description="Státní dluh překročil 2,8 bilionu Kč. Na každého Čecha — včetně kojenců — připadá přes 260 000 Kč dluhu."
+      accentColor="#00b4d8"
+      source={debtData.source.name}
+      sourceUrl={debtData.source.url}
+    />
+
+    <ChartSection
+      id="zdaneni-prace"
+      title="Kam mizí vaše&nbsp;peníze"
+      description="Z každých 61 769 Kč, co zaměstnavatel zaplatí za průměrného zaměstnance, dostane pracovník na účet jen 36 732 Kč. Zbytek — 40,5 % — spolknou odvody a daně."
+      accentColor="#00d4aa"
+      source={laborTaxData.source.name}
+      sourceUrl={laborTaxData.source.url}
+    />
+
+    <ChartSection
+      id="obsluha-dluhu"
+      title="Úroky z&nbsp;dluhu letí nahoru"
+      description="Náklady na obsluhu státního dluhu se po letech nízkých sazeb vrátily. V roce 2024 zaplatil stát přes 88 miliard Kč jen na úrocích — 5× více než v roce 2000."
+      accentColor="#00b4d8"
+      source={debtServiceData.source.name}
+      sourceUrl={debtServiceData.source.url}
+    />
+
+    <ChartSection
+      id="dane-cas"
+      title="Daně: vždycky nad&nbsp;průměrem"
+      description="Česko má konzistentně vyšší daňové zatížení práce než průměr OECD. I po snížení v posledních letech zůstáváme nad průměrem o 5 procentních bodů."
+      accentColor="#ffd93d"
+      source={taxTimeData.source.name}
+      sourceUrl={taxTimeData.source.url}
+    />
+
+    <ChartSection
+      id="dane"
+      title="Z výplaty vám zůstane sotva&nbsp;polovina"
+      description="Česko má vyšší daňové zatížení práce než průměr OECD. Z každé koruny, co zaměstnavatel zaplatí, dostane zaměstnanec jen ~60 %."
+      accentColor="#ff3e3e"
+      source={taxData.source.name}
+      sourceUrl={taxData.source.url}
+    />
+  </main>
+
+  <Footer />
+</Layout>
+
+<script>
+  import Chart from "chart.js/auto";
+
+  import inflationData from "../data/inflation-vs-wages.json";
+  import housingData from "../data/housing-affordability.json";
+  import rentData from "../data/rent-vs-wages.json";
+  import constructionData from "../data/housing-construction.json";
+  import demoData from "../data/demographics.json";
+  import pensionData from "../data/pensions-vs-wages.json";
+  import pensionSpendData from "../data/pension-spending.json";
+  import debtData from "../data/government-debt.json";
+  import debtServiceData from "../data/debt-servicing.json";
+  import laborTaxData from "../data/labor-tax-breakdown.json";
+  import taxData from "../data/tax-burden.json";
+  import taxTimeData from "../data/tax-burden-time.json";
+
+  const chartConfigs: Record<string, () => ConstructorParameters<typeof Chart>> = {
+    "kupni-sila": () => {
+      const ctx = document.getElementById("chart-kupni-sila") as HTMLCanvasElement;
+      return [ctx, {
+        type: "line",
+        data: {
+          labels: inflationData.labels,
+          datasets: inflationData.datasets.map(ds => ({
+            label: ds.label,
+            data: ds.data,
+            borderColor: ds.color,
+            backgroundColor: ds.color + "15",
+            fill: true,
+            tension: 0.3,
+            pointRadius: 3,
+            pointHoverRadius: 6,
+            borderWidth: 2.5,
+          })),
+        },
+        options: lineOptions("Index (1993 = 100)"),
+      }];
+    },
+
+    "bydleni": () => {
+      const ctx = document.getElementById("chart-bydleni") as HTMLCanvasElement;
+      return [ctx, {
+        type: "line",
+        data: {
+          labels: housingData.labels,
+          datasets: [{
+            label: housingData.datasets[0].label,
+            data: housingData.datasets[0].data,
+            borderColor: housingData.datasets[0].color,
+            backgroundColor: housingData.datasets[0].color + "20",
+            fill: true,
+            tension: 0.3,
+            pointRadius: 3,
+            pointHoverRadius: 6,
+            borderWidth: 2.5,
+          }],
+        },
+        options: lineOptions("Násobky ročního platu"),
+      }];
+    },
+
+    "demografie": () => {
+      const ctx = document.getElementById("chart-demografie") as HTMLCanvasElement;
+      return [ctx, {
+        type: "line",
+        data: {
+          labels: demoData.labels,
+          datasets: [
+            {
+              label: demoData.datasets[0].label,
+              data: demoData.datasets[0].data,
+              borderColor: demoData.datasets[0].color,
+              backgroundColor: demoData.datasets[0].color + "15",
+              fill: true,
+              tension: 0.3,
+              pointRadius: 3,
+              pointHoverRadius: 6,
+              borderWidth: 2.5,
+            },
+            {
+              label: demoData.datasets[1].label,
+              data: demoData.datasets[1].data,
+              borderColor: demoData.datasets[1].color,
+              borderDash: [8, 4],
+              borderWidth: 1.5,
+              pointRadius: 0,
+              fill: false,
+            },
+          ],
+        },
+        options: lineOptions("Děti na ženu"),
+      }];
+    },
+
+    "statni-dluh": () => {
+      const ctx = document.getElementById("chart-statni-dluh") as HTMLCanvasElement;
+      return [ctx, {
+        type: "bar",
+        data: {
+          labels: debtData.labels,
+          datasets: [
+            {
+              type: "bar" as const,
+              label: debtData.datasets[0].label,
+              data: debtData.datasets[0].data,
+              backgroundColor: debtData.datasets[0].color + "80",
+              borderColor: debtData.datasets[0].color,
+              borderWidth: 1,
+              borderRadius: 4,
+              yAxisID: "y",
+            },
+            {
+              type: "line" as const,
+              label: debtData.datasets[1].label,
+              data: debtData.datasets[1].data,
+              borderColor: debtData.datasets[1].color,
+              backgroundColor: "transparent",
+              borderWidth: 2.5,
+              pointRadius: 4,
+              pointHoverRadius: 7,
+              tension: 0.3,
+              yAxisID: "y1",
+            },
+          ],
+        },
+        options: {
+          ...baseOptions(),
+          scales: {
+            x: gridStyle(),
+            y: {
+              ...gridStyle(),
+              position: "left" as const,
+              title: { display: true, text: "mld. Kč", color: "#888" },
+            },
+            y1: {
+              ...gridStyle(),
+              position: "right" as const,
+              title: { display: true, text: "tis. Kč / obyvatel", color: "#888" },
+              grid: { display: false },
+            },
+          },
+        },
+      }];
+    },
+
+    "najmy": () => {
+      const ctx = document.getElementById("chart-najmy") as HTMLCanvasElement;
+      return [ctx, {
+        type: "line",
+        data: {
+          labels: rentData.labels,
+          datasets: [{
+            label: rentData.datasets[0].label,
+            data: rentData.datasets[0].data,
+            borderColor: rentData.datasets[0].color,
+            backgroundColor: rentData.datasets[0].color + "20",
+            fill: true,
+            tension: 0.3,
+            pointRadius: 3,
+            pointHoverRadius: 6,
+            borderWidth: 2.5,
+          }],
+        },
+        options: lineOptions("% čisté mzdy"),
+      }];
+    },
+
+    "vystavba": () => {
+      const ctx = document.getElementById("chart-vystavba") as HTMLCanvasElement;
+      return [ctx, {
+        type: "line",
+        data: {
+          labels: constructionData.labels,
+          datasets: constructionData.datasets.map(ds => ({
+            label: ds.label,
+            data: ds.data,
+            borderColor: ds.color,
+            backgroundColor: ds.color + "15",
+            fill: true,
+            tension: 0.3,
+            pointRadius: 3,
+            pointHoverRadius: 6,
+            borderWidth: 2.5,
+          })),
+        },
+        options: lineOptions("Počet bytů"),
+      }];
+    },
+
+    "duchody": () => {
+      const ctx = document.getElementById("chart-duchody") as HTMLCanvasElement;
+      return [ctx, {
+        type: "line",
+        data: {
+          labels: pensionData.labels,
+          datasets: [{
+            label: pensionData.datasets[0].label,
+            data: pensionData.datasets[0].data,
+            borderColor: pensionData.datasets[0].color,
+            backgroundColor: pensionData.datasets[0].color + "20",
+            fill: true,
+            tension: 0.3,
+            pointRadius: 3,
+            pointHoverRadius: 6,
+            borderWidth: 2.5,
+          }],
+        },
+        options: lineOptions("% hrubé mzdy"),
+      }];
+    },
+
+    "vydaje-duchody": () => {
+      const ctx = document.getElementById("chart-vydaje-duchody") as HTMLCanvasElement;
+      return [ctx, {
+        type: "bar",
+        data: {
+          labels: pensionSpendData.labels,
+          datasets: [
+            {
+              type: "bar" as const,
+              label: pensionSpendData.datasets[0].label,
+              data: pensionSpendData.datasets[0].data,
+              backgroundColor: pensionSpendData.datasets[0].color + "80",
+              borderColor: pensionSpendData.datasets[0].color,
+              borderWidth: 1,
+              borderRadius: 4,
+              yAxisID: "y",
+            },
+            {
+              type: "line" as const,
+              label: pensionSpendData.datasets[1].label,
+              data: pensionSpendData.datasets[1].data,
+              borderColor: pensionSpendData.datasets[1].color,
+              backgroundColor: "transparent",
+              borderWidth: 2.5,
+              pointRadius: 4,
+              pointHoverRadius: 7,
+              tension: 0.3,
+              yAxisID: "y1",
+            },
+          ],
+        },
+        options: {
+          ...baseOptions(),
+          scales: {
+            x: gridStyle(),
+            y: {
+              ...gridStyle(),
+              position: "left" as const,
+              title: { display: true, text: "% HDP", color: "#888" },
+            },
+            y1: {
+              ...gridStyle(),
+              position: "right" as const,
+              title: { display: true, text: "% populace 65+", color: "#888" },
+              grid: { display: false },
+            },
+          },
+        },
+      }];
+    },
+
+    "zdaneni-prace": () => {
+      const ctx = document.getElementById("chart-zdaneni-prace") as HTMLCanvasElement;
+      return [ctx, {
+        type: "doughnut",
+        data: {
+          labels: laborTaxData.labels,
+          datasets: [{
+            data: laborTaxData.data,
+            backgroundColor: laborTaxData.colors,
+            borderColor: "#0a0a0a",
+            borderWidth: 2,
+            hoverOffset: 8,
+          }],
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          cutout: "55%",
+          animation: { duration: 1200, easing: "easeOutQuart" as const },
+          plugins: {
+            legend: {
+              display: true,
+              position: "bottom" as const,
+              labels: {
+                color: "#e0e0e0",
+                font: { size: window.innerWidth > 640 ? 12 : 10 },
+                boxWidth: 12,
+                padding: 16,
+              },
+            },
+            tooltip: {
+              backgroundColor: "#1a1a1a",
+              titleColor: "#fff",
+              bodyColor: "#e0e0e0",
+              borderColor: "#333",
+              borderWidth: 1,
+              cornerRadius: 8,
+              padding: 12,
+              callbacks: {
+                label: (ctx: any) => {
+                  const val = ctx.raw as number;
+                  const pct = laborTaxData.percentages[ctx.dataIndex];
+                  return ` ${ctx.label}: ${val.toLocaleString("cs-CZ")} Kč (${pct} %)`;
+                },
+              },
+            },
+          },
+        },
+      }];
+    },
+
+    "obsluha-dluhu": () => {
+      const ctx = document.getElementById("chart-obsluha-dluhu") as HTMLCanvasElement;
+      return [ctx, {
+        type: "bar",
+        data: {
+          labels: debtServiceData.labels,
+          datasets: [{
+            label: debtServiceData.datasets[0].label,
+            data: debtServiceData.datasets[0].data,
+            backgroundColor: debtServiceData.datasets[0].color + "80",
+            borderColor: debtServiceData.datasets[0].color,
+            borderWidth: 1,
+            borderRadius: 4,
+          }],
+        },
+        options: lineOptions("mld. Kč"),
+      }];
+    },
+
+    "dane-cas": () => {
+      const ctx = document.getElementById("chart-dane-cas") as HTMLCanvasElement;
+      return [ctx, {
+        type: "line",
+        data: {
+          labels: taxTimeData.labels,
+          datasets: taxTimeData.datasets.map(ds => ({
+            label: ds.label,
+            data: ds.data,
+            borderColor: ds.color,
+            backgroundColor: ds.color + "15",
+            fill: true,
+            tension: 0.3,
+            pointRadius: 3,
+            pointHoverRadius: 6,
+            borderWidth: 2.5,
+          })),
+        },
+        options: lineOptions("Tax wedge (%)"),
+      }];
+    },
+
+    "dane": () => {
+      const ctx = document.getElementById("chart-dane") as HTMLCanvasElement;
+      const colors = taxData.datasets[0].colors;
+      return [ctx, {
+        type: "bar",
+        data: {
+          labels: taxData.labels,
+          datasets: [{
+            label: taxData.datasets[0].label,
+            data: taxData.datasets[0].data,
+            backgroundColor: colors.map((c: string) => c + "cc"),
+            borderColor: colors,
+            borderWidth: 1,
+            borderRadius: 4,
+          }],
+        },
+        options: {
+          ...baseOptions(),
+          indexAxis: "y" as const,
+          scales: {
+            x: {
+              ...gridStyle(),
+              title: { display: true, text: "%", color: "#888" },
+              min: 0,
+              max: 55,
+            },
+            y: gridStyle(),
+          },
+        },
+      }];
+    },
+  };
+
+  function baseOptions(): any {
+    return {
+      responsive: true,
+      maintainAspectRatio: false,
+      animation: { duration: 1200, easing: "easeOutQuart" as const },
+      plugins: {
+        legend: {
+          display: window.innerWidth > 640,
+          labels: { color: "#e0e0e0", font: { size: 12 }, boxWidth: 12, padding: 20 },
+        },
+        tooltip: {
+          backgroundColor: "#1a1a1a",
+          titleColor: "#fff",
+          bodyColor: "#e0e0e0",
+          borderColor: "#333",
+          borderWidth: 1,
+          cornerRadius: 8,
+          padding: 12,
+        },
+      },
+    };
+  }
+
+  function gridStyle(): any {
+    return {
+      ticks: { color: "#666", font: { size: 11 } },
+      grid: { color: "#1a1a1a" },
+    };
+  }
+
+  function lineOptions(yTitle: string): any {
+    return {
+      ...baseOptions(),
+      scales: {
+        x: gridStyle(),
+        y: {
+          ...gridStyle(),
+          title: { display: true, text: yTitle, color: "#888" },
+        },
+      },
+    };
+  }
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+
+      const container = entry.target as HTMLElement;
+      const chartId = container.dataset.chartId!;
+
+      container.classList.remove("opacity-0", "translate-y-8");
+      container.classList.add("opacity-100", "translate-y-0");
+
+      if (chartConfigs[chartId]) {
+        const args = chartConfigs[chartId]();
+        new Chart(...args);
+        delete chartConfigs[chartId];
+      }
+
+      observer.unobserve(container);
+    });
+  }, { threshold: 0.15 });
+
+  document.querySelectorAll<HTMLElement>(".chart-container").forEach(el => observer.observe(el));
+</script>

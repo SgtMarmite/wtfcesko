@@ -1,0 +1,36 @@
+---
+const sources = [
+  { name: "ČSÚ — Index spotřebitelských cen", url: "https://www.czso.cz/csu/czso/indexy-spotrebitelskych-cen-podle-klasifikace-coicop" },
+  { name: "ČSÚ — Průměrné mzdy", url: "https://www.czso.cz/csu/czso/prace_a_mzdy_prace" },
+  { name: "ČSÚ — Ceny bytů", url: "https://www.czso.cz/csu/czso/ceny_bytu" },
+  { name: "ČSÚ — Demografická ročenka", url: "https://www.czso.cz/csu/czso/demograficka-rocenka-ceske-republiky" },
+  { name: "MF ČR — Státní dluh", url: "https://www.mfcr.cz/cs/verejny-sektor/rizeni-statniho-dluhu/dluhova-statistika" },
+  { name: "OECD — Taxing Wages", url: "https://www.oecd.org/tax/taxing-wages/" },
+];
+---
+
+<footer id="zdroje" class="border-t border-border bg-bg-card mt-16">
+  <div class="max-w-5xl mx-auto px-6 py-16 md:py-24">
+    <h2 class="font-heading text-text-heading text-2xl md:text-3xl font-bold mb-8">Zdroje dat</h2>
+    <ul class="grid grid-cols-1 md:grid-cols-2 gap-3">
+      {sources.map((s) => (
+        <li>
+          <a
+            href={s.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-text-muted hover:text-accent-red transition-colors duration-200 text-sm"
+          >
+            {s.name} &nearr;
+          </a>
+        </li>
+      ))}
+    </ul>
+
+    <div class="mt-16 pt-8 border-t border-border flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+      <p class="text-text-muted text-xs">
+        &copy; 2026 WTF Česko — Data mluví za vše.
+      </p>
+    </div>
+  </div>
+</footer>

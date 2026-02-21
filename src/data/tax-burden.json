@@ -1,0 +1,18 @@
+{
+  "title": "Daňové zatížení",
+  "description": "Tax wedge — celkové daňové zatížení práce (%) pro svobodného bezdětného pracovníka s průměrnou mzdou, 2024",
+  "source": {
+    "name": "OECD Taxing Wages 2025 via Tax Foundation",
+    "url": "https://taxfoundation.org/data/all/eu/tax-burden-on-labor-europe/"
+  },
+  "labels": [
+    "Česko", "Německo", "Rakousko", "Slovensko", "Irsko", "OECD průměr", "Polsko", "USA", "Švýcarsko"
+  ],
+  "datasets": [
+    {
+      "label": "Tax wedge (%)",
+      "data": [40.9, 47.9, 47.0, 42.6, 35.2, 34.8, 34.7, 30.5, 22.9],
+      "colors": ["#ff3e3e", "#888888", "#888888", "#888888", "#888888", "#ffd93d", "#888888", "#888888", "#888888"]
+    }
+  ]
+}

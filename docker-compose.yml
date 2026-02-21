@@ -1,0 +1,12 @@
+services:
+  app:
+    build: .
+    ports:
+      - "8080:80"
+
+  tests:
+    build:
+      context: .
+      target: build
+    working_dir: /app
+    command: npm run build
