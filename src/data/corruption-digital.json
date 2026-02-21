@@ -1,0 +1,32 @@
+{
+  "title": "Korupce a digitalizace — bludný kruh",
+  "description": "Index vnímání korupce (CPI) v čase. Česko stagnuje kolem 55 bodů — zatímco sousední Německo je nad 78. Méně důvěry = méně reforem = méně pokroku.",
+  "source": {
+    "name": "Transparency International — Corruption Perceptions Index",
+    "url": "https://www.transparency.org/en/cpi/2024"
+  },
+  "note": "CPI škála 0 (vysoce zkorumpované) — 100 (velmi čisté). DESI: EC Digital Economy and Society Index.",
+  "labels": ["1997", "1999", "2002", "2004", "2006", "2008", "2010", "2012", "2014", "2016", "2018", "2020", "2022", "2024"],
+  "datasets": [
+    {
+      "label": "Česko",
+      "data": [52, 46, 37, 42, 48, 52, 46, 49, 51, 55, 59, 54, 56, 57],
+      "color": "#ff3e3e"
+    },
+    {
+      "label": "Německo",
+      "data": [82, 80, 73, 82, 80, 79, 79, 79, 79, 81, 80, 80, 79, 78],
+      "color": "#888888"
+    },
+    {
+      "label": "Polsko",
+      "data": [50, 42, 40, 35, 37, 46, 53, 58, 61, 62, 60, 56, 55, 54],
+      "color": "#6c5ce7"
+    },
+    {
+      "label": "EU průměr",
+      "data": [65, 63, 60, 62, 63, 64, 63, 64, 65, 65, 65, 64, 64, 63],
+      "color": "#ffd93d"
+    }
+  ]
+}

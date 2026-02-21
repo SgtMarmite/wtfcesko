@@ -1,0 +1,25 @@
+---
+interface Props {
+  id: string;
+  number: string;
+  title: string;
+  subtitle: string;
+}
+
+const { id, number, title, subtitle } = Astro.props;
+---
+
+<div id={id} class="relative py-24 md:py-32 px-6">
+  <div class="max-w-5xl mx-auto">
+    <span class="block font-heading text-7xl md:text-9xl font-bold text-text-muted/10 leading-none select-none">
+      {number}
+    </span>
+    <h2 class="font-heading text-text-heading text-3xl md:text-5xl font-bold -mt-6 md:-mt-10 leading-tight">
+      {title}
+    </h2>
+    <p class="text-text-muted text-base md:text-lg mt-3 max-w-xl">
+      {subtitle}
+    </p>
+    <div class="w-16 h-px bg-accent-red/40 mt-8"></div>
+  </div>
+</div>

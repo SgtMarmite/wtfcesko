@@ -2,28 +2,47 @@
 import Layout from "../layouts/Layout.astro";
 import Hero from "../components/Hero.astro";
 import ChartSection from "../components/ChartSection.astro";
+import ActDivider from "../components/ActDivider.astro";
+import ClosingSection from "../components/ClosingSection.astro";
 import Nav from "../components/Nav.astro";
 import Footer from "../components/Footer.astro";
 import "../styles/global.css";
 
 import inflationData from "../data/inflation-vs-wages.json";
+import gdpWagesData from "../data/gdp-vs-wages.json";
+import laborTaxData from "../data/labor-tax-breakdown.json";
+import taxData from "../data/tax-burden.json";
+import foodData from "../data/food-prices.json";
+import energyData from "../data/energy-prices.json";
 import housingData from "../data/housing-affordability.json";
 import rentData from "../data/rent-vs-wages.json";
 import constructionData from "../data/housing-construction.json";
 import demoData from "../data/demographics.json";
+import healthData from "../data/healthcare.json";
 import pensionData from "../data/pensions-vs-wages.json";
 import pensionSpendData from "../data/pension-spending.json";
 import debtData from "../data/government-debt.json";
 import debtServiceData from "../data/debt-servicing.json";
-import laborTaxData from "../data/labor-tax-breakdown.json";
-import taxData from "../data/tax-burden.json";
 import taxTimeData from "../data/tax-burden-time.json";
+import productivityData from "../data/productivity.json";
+import educationData from "../data/education-spending.json";
+import rdData from "../data/rd-spending.json";
+import corruptionData from "../data/corruption-digital.json";
+import wageRealityData from "../data/wage-reality.json";
 ---
 
 <Layout title="WTF Česko — Co se stalo s českou ekonomikou?">
   <Nav />
   <main>
     <Hero />
+
+    <!-- Akt 1: Iluze růstu -->
+    <ActDivider
+      id="akt-1"
+      number="01"
+      title="Iluze růstu"
+      subtitle="Mzdy rostou 30 let. Tak proč si nemůžete dovolit víc?"
+    />
 
     <ChartSection
       id="kupni-sila"
@@ -35,9 +54,71 @@ import taxTimeData from "../data/tax-burden-time.json";
     />
 
     <ChartSection
+      id="mzdy-realita"
+      title="ALE: průměrná mzda je&nbsp;iluze"
+      description="Dva ze tří zaměstnanců berou méně než průměr. Medián — mzda, pod kterou je polovina lidí — je o 7 500 Kč nižší. A Praha s 60 tisíci táhne celou statistiku nahoru."
+      accentColor="#ff3e3e"
+      source={wageRealityData.source.name}
+      sourceUrl={wageRealityData.source.url}
+    />
+
+    <ChartSection
+      id="hdp-vs-mzdy"
+      title="Vyděláváme pod svou&nbsp;cenou"
+      description="Česko má HDP na úrovni 84 % průměru EU — ale mzdy jen 62 %. Vyrábíme skoro jako západ, platí nám jako východ. Kam mizí ten rozdíl?"
+      accentColor="#ff3e3e"
+      source={gdpWagesData.source.name}
+      sourceUrl={gdpWagesData.source.url}
+    />
+
+    <ChartSection
+      id="zdaneni-prace"
+      title="Kam mizí vaše&nbsp;peníze"
+      description="Z každých 61 769 Kč, co zaměstnavatel zaplatí, dostane pracovník na účet jen 36 454 Kč. Zbytek — 41 % — spolknou odvody a daně. Částečná odpověď na ten rozdíl."
+      accentColor="#00d4aa"
+      source={laborTaxData.source.name}
+      sourceUrl={laborTaxData.source.url}
+    />
+
+    <ChartSection
+      id="dane"
+      title="Z výplaty vám zůstane sotva&nbsp;polovina"
+      description="Česko má vyšší daňové zatížení práce než průměr OECD. Z každé koruny, co zaměstnavatel zaplatí, dostane zaměstnanec jen ~60 %. A nejsme v tom sami — ale patříme k těm horším."
+      accentColor="#ff3e3e"
+      source={taxData.source.name}
+      sourceUrl={taxData.source.url}
+    />
+
+    <!-- Akt 2: Co si za to koupíš -->
+    <ActDivider
+      id="akt-2"
+      number="02"
+      title="Co si za to koupíš"
+      subtitle="Máš 60 % výplaty. Tady je, co s ní dokážeš."
+    />
+
+    <ChartSection
+      id="potraviny"
+      title="Za jídlo dáváme víc než&nbsp;Západ"
+      description="Česká domácnost utratí za potraviny 16 % výdajů — v Německu je to 11 %, v Rakousku 10 %. <a href='https://en.wikipedia.org/wiki/Engel%27s_law' target='_blank' rel='noopener noreferrer' class='underline hover:text-text transition-colors'>Engellův zákon</a>: čím nižší příjmy, tím víc z nich spolkne jídlo."
+      accentColor="#ff3e3e"
+      source={foodData.source.name}
+      sourceUrl={foodData.source.url}
+    />
+
+    <ChartSection
+      id="energie"
+      title="Elektřina: vyrábíme, ale&nbsp;platíme"
+      description="Česko má vlastní jaderné i uhelné zdroje, přesto platíme víc než Polsko nebo Slovensko. Cenu určuje evropská burza, ne domácí výroba — a při našich mzdách to bolí víc než v Německu."
+      accentColor="#ffd93d"
+      source={energyData.source.name}
+      sourceUrl={energyData.source.url}
+    />
+
+    <ChartSection
       id="bydleni"
-      title="Na byt šetříte 11 let"
-      description="V roce 2005 stál průměrný byt 5 ročních platů. Dnes je to přes 10. Celá generace je odstřižená od vlastního bydlení."
+      title="Ceny bytů utíkají mzdám"
+      description="Od roku 1998 vzrostly ceny bytů za m² téměř 5×, ale mzdy jen 4×. Nůžky se rozevřely hlavně po roce 2015 — a Deloitte Property Index řadí Česko mezi nejméně dostupné trhy v Evropě (13 ročních platů na nový byt)."
       accentColor="#ffd93d"
       source={housingData.source.name}
       sourceUrl={housingData.source.url}
@@ -46,7 +127,7 @@ import taxTimeData from "../data/tax-burden-time.json";
     <ChartSection
       id="najmy"
       title="Půlka výplaty za&nbsp;nájem"
-      description="Podíl průměrného nájmu na čisté mzdě roste. V krajských městech dnes spolkne nájem přes 40 % čisté výplaty — a v Praze ještě víc."
+      description="Podíl průměrného nájmu na čisté mzdě roste. V krajských městech dnes spolkne nájem přes 40 % čisté výplaty — a v Praze ještě víc. Vlastnit nemůžete, pronajímat nemůžete."
       accentColor="#e056a0"
       source={rentData.source.name}
       sourceUrl={rentData.source.url}
@@ -55,19 +136,36 @@ import taxTimeData from "../data/tax-burden-time.json";
     <ChartSection
       id="vystavba"
       title="Staví se málo, méně než&nbsp;dřív"
-      description="Počet zahájených i dokončených bytů je hluboko pod úrovní potřebnou k pokrytí poptávky. Stavební řízení trvá roky, kapacity chybí."
+      description="Počet zahájených i dokončených bytů je hluboko pod úrovní potřebnou k pokrytí poptávky. Stavební řízení trvá roky, kapacity chybí. Řešení je v nedohlednu."
       accentColor="#00d4aa"
       source={constructionData.source.name}
       sourceUrl={constructionData.source.url}
     />
 
+    <!-- Akt 3: Důsledky -->
+    <ActDivider
+      id="akt-3"
+      number="03"
+      title="Důsledky"
+      subtitle="Nemůžeš bydlet, nemůžeš šetřit. Co se děje dál?"
+    />
+
     <ChartSection
       id="demografie"
       title="Děti se nerodí"
-      description="Česko je hluboko pod hranicí prosté reprodukce (2,1 dítěte na ženu). Populace stárne a bez imigrace se bude zmenšovat."
+      description="Když nemůžete bydlet a peníze sotva stačí, kdo bude mít děti? Česko je hluboko pod hranicí prosté reprodukce. Populace stárne a bez imigrace se bude zmenšovat."
       accentColor="#6c5ce7"
       source={demoData.source.name}
       sourceUrl={demoData.source.url}
+    />
+
+    <ChartSection
+      id="zdravotnictvi"
+      title="Lékaři stárnou rychleji než&nbsp;pacienti"
+      description="340 tisíc lidí nemá praktického lékaře. Průměrný věk PL přesahuje 55 let, téměř 40 % je nad šedesát. Kdo bude léčit stárnoucí populaci, když se lékaři sami blíží důchodu?"
+      accentColor="#ff8c42"
+      source={healthData.source.name}
+      sourceUrl={healthData.source.url}
     />
 
     <ChartSection
@@ -82,34 +180,33 @@ import taxTimeData from "../data/tax-burden-time.json";
     <ChartSection
       id="vydaje-duchody"
       title="Důchody nás stojí stále&nbsp;víc"
-      description="Výdaje na důchody jako podíl HDP stagnují kolem 8 %, ale populace 65+ roste. Systém se blíží bodu zlomu."
+      description="Výdaje na důchody jako podíl HDP stagnují kolem 8 %, ale populace 65+ roste. Méně dětí dnes = méně daní zítra = neudržitelný systém."
       accentColor="#6c5ce7"
       source={pensionSpendData.source.name}
       sourceUrl={pensionSpendData.source.url}
     />
 
+    <!-- Akt 4: Stát na to nemá -->
+    <ActDivider
+      id="akt-4"
+      number="04"
+      title="Stát na to nemá"
+      subtitle="Kdo to zaplatí? Stát, co sám dluží biliony?"
+    />
+
     <ChartSection
       id="statni-dluh"
       title="Dluh, co roste rychleji než&nbsp;ekonomika"
-      description="Státní dluh překročil 2,8 bilionu Kč. Na každého Čecha — včetně kojenců — připadá přes 260 000 Kč dluhu."
+      description="Státní dluh překročil 3,1 bilionu Kč. Na každého Čecha — včetně kojenců — připadá přes 286 000 Kč dluhu. A tempo se zrychluje."
       accentColor="#00b4d8"
       source={debtData.source.name}
       sourceUrl={debtData.source.url}
     />
 
     <ChartSection
-      id="zdaneni-prace"
-      title="Kam mizí vaše&nbsp;peníze"
-      description="Z každých 61 769 Kč, co zaměstnavatel zaplatí za průměrného zaměstnance, dostane pracovník na účet jen 36 732 Kč. Zbytek — 40,5 % — spolknou odvody a daně."
-      accentColor="#00d4aa"
-      source={laborTaxData.source.name}
-      sourceUrl={laborTaxData.source.url}
-    />
-
-    <ChartSection
       id="obsluha-dluhu"
       title="Úroky z&nbsp;dluhu letí nahoru"
-      description="Náklady na obsluhu státního dluhu se po letech nízkých sazeb vrátily. V roce 2024 zaplatil stát přes 88 miliard Kč jen na úrocích — 5× více než v roce 2000."
+      description="Náklady na obsluhu státního dluhu se po letech nízkých sazeb vrátily. V roce 2024 stát zaplatil přes 88 miliard Kč jen na úrocích — peníze, které mohly jít do škol nebo nemocnic."
       accentColor="#00b4d8"
       source={debtServiceData.source.name}
       sourceUrl={debtServiceData.source.url}
@@ -118,20 +215,57 @@ import taxTimeData from "../data/tax-burden-time.json";
     <ChartSection
       id="dane-cas"
       title="Daně: vždycky nad&nbsp;průměrem"
-      description="Česko má konzistentně vyšší daňové zatížení práce než průměr OECD. I po snížení v posledních letech zůstáváme nad průměrem o 5 procentních bodů."
+      description="Česko má konzistentně vyšší daňové zatížení práce než průměr OECD. I po snížení v posledních letech zůstáváme nad průměrem. Vysoké daně, ale veřejné služby na úrovni?"
       accentColor="#ffd93d"
       source={taxTimeData.source.name}
       sourceUrl={taxTimeData.source.url}
     />
 
-    <ChartSection
-      id="dane"
-      title="Z výplaty vám zůstane sotva&nbsp;polovina"
-      description="Česko má vyšší daňové zatížení práce než průměr OECD. Z každé koruny, co zaměstnavatel zaplatí, dostane zaměstnanec jen ~60 %."
-      accentColor="#ff3e3e"
-      source={taxData.source.name}
-      sourceUrl={taxData.source.url}
+    <!-- Akt 5: Proč se nic nemění -->
+    <ActDivider
+      id="akt-5"
+      number="05"
+      title="Proč se nic nemění"
+      subtitle="Proč jsme tady? A co nás drží na místě?"
     />
+
+    <ChartSection
+      id="produktivita"
+      title="Produktivita roste pomalu"
+      description="Česko vyrábí za hodinu práce méně než průměr EU. Polsko nás dotahuje. Bez růstu produktivity nebudou růst ani mzdy — to je ta skutečná brzda."
+      accentColor="#ff3e3e"
+      source={productivityData.source.name}
+      sourceUrl={productivityData.source.url}
+    />
+
+    <ChartSection
+      id="skolstvi"
+      title="Na školství se&nbsp;šetří"
+      description="Investice do vzdělání jsou pod průměrem OECD. Učitelé berou méně než průměrná mzda. Kdo bude učit budoucí generace, když se na vzdělávání šetří?"
+      accentColor="#6c5ce7"
+      source={educationData.source.name}
+      sourceUrl={educationData.source.url}
+    />
+
+    <ChartSection
+      id="vyzkum"
+      title="Výzkum zaostává za&nbsp;lídry"
+      description="Výdaje na R&D rostou, ale stále nedosahují průměru EU. Za inovačními lídry jako Švédsko nebo Rakousko zaostáváme o celý procentní bod HDP. Bez výzkumu není inovace, bez inovace není produktivita."
+      accentColor="#00b4d8"
+      source={rdData.source.name}
+      sourceUrl={rdData.source.url}
+    />
+
+    <ChartSection
+      id="korupce-digital"
+      title="Korupce brzdí&nbsp;změnu"
+      description="CPI stagnuje kolem 55 bodů — hluboko pod Německem i průměrem EU. Méně důvěry ve stát = méně ochoty platit daně = méně peněz na investice. Kruh se uzavírá."
+      accentColor="#ff3e3e"
+      source={corruptionData.source.name}
+      sourceUrl={corruptionData.source.url}
+    />
+
+    <ClosingSection />
   </main>
 
   <Footer />
@@ -141,17 +275,96 @@ import taxTimeData from "../data/tax-burden-time.json";
   import Chart from "chart.js/auto";
 
   import inflationData from "../data/inflation-vs-wages.json";
+  import gdpWagesData from "../data/gdp-vs-wages.json";
+  import laborTaxData from "../data/labor-tax-breakdown.json";
+  import taxData from "../data/tax-burden.json";
+  import foodData from "../data/food-prices.json";
+  import energyData from "../data/energy-prices.json";
   import housingData from "../data/housing-affordability.json";
   import rentData from "../data/rent-vs-wages.json";
   import constructionData from "../data/housing-construction.json";
   import demoData from "../data/demographics.json";
+  import healthData from "../data/healthcare.json";
   import pensionData from "../data/pensions-vs-wages.json";
   import pensionSpendData from "../data/pension-spending.json";
   import debtData from "../data/government-debt.json";
   import debtServiceData from "../data/debt-servicing.json";
-  import laborTaxData from "../data/labor-tax-breakdown.json";
-  import taxData from "../data/tax-burden.json";
   import taxTimeData from "../data/tax-burden-time.json";
+  import productivityData from "../data/productivity.json";
+  import educationData from "../data/education-spending.json";
+  import rdData from "../data/rd-spending.json";
+  import corruptionData from "../data/corruption-digital.json";
+  import wageRealityData from "../data/wage-reality.json";
+
+  function baseOptions(): any {
+    return {
+      responsive: true,
+      maintainAspectRatio: false,
+      animation: { duration: 1200, easing: "easeOutQuart" as const },
+      plugins: {
+        legend: {
+          display: window.innerWidth > 640,
+          labels: { color: "#e0e0e0", font: { size: 12 }, boxWidth: 12, padding: 20 },
+        },
+        tooltip: {
+          backgroundColor: "#1a1a1a",
+          titleColor: "#fff",
+          bodyColor: "#e0e0e0",
+          borderColor: "#333",
+          borderWidth: 1,
+          cornerRadius: 8,
+          padding: 12,
+        },
+      },
+    };
+  }
+
+  function gridStyle(): any {
+    return {
+      ticks: { color: "#666", font: { size: 11 } },
+      grid: { color: "#1a1a1a" },
+    };
+  }
+
+  function lineOptions(yTitle: string): any {
+    return {
+      ...baseOptions(),
+      scales: {
+        x: gridStyle(),
+        y: {
+          ...gridStyle(),
+          title: { display: true, text: yTitle, color: "#888" },
+        },
+      },
+    };
+  }
+
+  function lineDataset(ds: any, fill = true) {
+    return {
+      label: ds.label,
+      data: ds.data,
+      borderColor: ds.color,
+      backgroundColor: ds.color + (fill ? "15" : "00"),
+      fill,
+      tension: 0.3,
+      pointRadius: 3,
+      pointHoverRadius: 6,
+      borderWidth: 2.5,
+    };
+  }
+
+  function groupedBarOptions(yTitle: string): any {
+    return {
+      ...baseOptions(),
+      scales: {
+        x: gridStyle(),
+        y: {
+          ...gridStyle(),
+          title: { display: true, text: yTitle, color: "#888" },
+        },
+      },
+    };
+  }
 
   const chartConfigs: Record<string, () => ConstructorParameters<typeof Chart>> = {
     "kupni-sila": () => {
@@ -160,19 +373,201 @@ import taxTimeData from "../data/tax-burden-time.json";
         type: "line",
         data: {
           labels: inflationData.labels,
-          datasets: inflationData.datasets.map(ds => ({
-            label: ds.label,
-            data: ds.data,
-            borderColor: ds.color,
-            backgroundColor: ds.color + "15",
-            fill: true,
-            tension: 0.3,
-            pointRadius: 3,
-            pointHoverRadius: 6,
-            borderWidth: 2.5,
-          })),
+          datasets: inflationData.datasets.map(ds => lineDataset(ds)),
         },
         options: lineOptions("Index (1993 = 100)"),
+      }];
+    },
+
+    "mzdy-realita": () => {
+      const ctx = document.getElementById("chart-mzdy-realita") as HTMLCanvasElement;
+      const colors = wageRealityData.datasets[0].colors;
+      return [ctx, {
+        type: "bar",
+        data: {
+          labels: wageRealityData.labels,
+          datasets: [{
+            label: wageRealityData.datasets[0].label,
+            data: wageRealityData.datasets[0].data,
+            backgroundColor: colors.map((c: string) => c + "cc"),
+            borderColor: colors,
+            borderWidth: 1,
+            borderRadius: 4,
+          }],
+        },
+        options: {
+          ...baseOptions(),
+          indexAxis: "y" as const,
+          scales: {
+            x: {
+              ...gridStyle(),
+              title: { display: true, text: "Kč / měsíc", color: "#888" },
+            },
+            y: gridStyle(),
+          },
+        },
+      }];
+    },
+
+    "hdp-vs-mzdy": () => {
+      const ctx = document.getElementById("chart-hdp-vs-mzdy") as HTMLCanvasElement;
+      return [ctx, {
+        type: "bar",
+        data: {
+          labels: gdpWagesData.labels,
+          datasets: gdpWagesData.datasets.map(ds => ({
+            label: ds.label,
+            data: ds.data,
+            backgroundColor: ds.color + "cc",
+            borderColor: ds.color,
+            borderWidth: 1,
+            borderRadius: 4,
+          })),
+        },
+        options: groupedBarOptions("% průměru EU"),
+      }];
+    },
+
+    "zdaneni-prace": () => {
+      const ctx = document.getElementById("chart-zdaneni-prace") as HTMLCanvasElement;
+      return [ctx, {
+        type: "doughnut",
+        data: {
+          labels: laborTaxData.labels,
+          datasets: [{
+            data: laborTaxData.data,
+            backgroundColor: laborTaxData.colors,
+            borderColor: "#0a0a0a",
+            borderWidth: 2,
+            hoverOffset: 8,
+          }],
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          cutout: "55%",
+          animation: { duration: 1200, easing: "easeOutQuart" as const },
+          plugins: {
+            legend: {
+              display: true,
+              position: "bottom" as const,
+              labels: {
+                color: "#e0e0e0",
+                font: { size: window.innerWidth > 640 ? 12 : 10 },
+                boxWidth: 12,
+                padding: 16,
+              },
+            },
+            tooltip: {
+              backgroundColor: "#1a1a1a",
+              titleColor: "#fff",
+              bodyColor: "#e0e0e0",
+              borderColor: "#333",
+              borderWidth: 1,
+              cornerRadius: 8,
+              padding: 12,
+              callbacks: {
+                label: (ctx: any) => {
+                  const val = ctx.raw as number;
+                  const pct = laborTaxData.percentages[ctx.dataIndex];
+                  return ` ${ctx.label}: ${val.toLocaleString("cs-CZ")} Kč (${pct} %)`;
+                },
+              },
+            },
+          },
+        },
+      }];
+    },
+
+    "dane": () => {
+      const ctx = document.getElementById("chart-dane") as HTMLCanvasElement;
+      const colors = taxData.datasets[0].colors;
+      return [ctx, {
+        type: "bar",
+        data: {
+          labels: taxData.labels,
+          datasets: [{
+            label: taxData.datasets[0].label,
+            data: taxData.datasets[0].data,
+            backgroundColor: colors.map((c: string) => c + "cc"),
+            borderColor: colors,
+            borderWidth: 1,
+            borderRadius: 4,
+          }],
+        },
+        options: {
+          ...baseOptions(),
+          indexAxis: "y" as const,
+          scales: {
+            x: {
+              ...gridStyle(),
+              title: { display: true, text: "%", color: "#888" },
+              min: 0,
+              max: 55,
+            },
+            y: gridStyle(),
+          },
+        },
+      }];
+    },
+
+    "potraviny": () => {
+      const ctx = document.getElementById("chart-potraviny") as HTMLCanvasElement;
+      const colors = foodData.datasets[0].colors;
+      return [ctx, {
+        type: "bar",
+        data: {
+          labels: foodData.labels,
+          datasets: [{
+            label: foodData.datasets[0].label,
+            data: foodData.datasets[0].data,
+            backgroundColor: colors.map((c: string) => c + "cc"),
+            borderColor: colors,
+            borderWidth: 1,
+            borderRadius: 4,
+          }],
+        },
+        options: {
+          ...baseOptions(),
+          indexAxis: "y" as const,
+          scales: {
+            x: {
+              ...gridStyle(),
+              title: { display: true, text: "% výdajů domácností", color: "#888" },
+            },
+            y: gridStyle(),
+          },
+        },
+      }];
+    },
+
+    "energie": () => {
+      const ctx = document.getElementById("chart-energie") as HTMLCanvasElement;
+      const colors = energyData.datasets[0].colors;
+      return [ctx, {
+        type: "bar",
+        data: {
+          labels: energyData.labels,
+          datasets: [{
+            label: energyData.datasets[0].label,
+            data: energyData.datasets[0].data,
+            backgroundColor: colors.map((c: string) => c + "cc"),
+            borderColor: colors,
+            borderWidth: 1,
+            borderRadius: 4,
+          }],
+        },
+        options: {
+          ...baseOptions(),
+          indexAxis: "y" as const,
+          scales: {
+            x: {
+              ...gridStyle(),
+              title: { display: true, text: "ct/kWh", color: "#888" },
+            },
+            y: gridStyle(),
+          },
+        },
       }];
     },
 
@@ -182,19 +577,36 @@ import taxTimeData from "../data/tax-burden-time.json";
         type: "line",
         data: {
           labels: housingData.labels,
+          datasets: housingData.datasets.map(ds => lineDataset(ds)),
+        },
+        options: lineOptions("Index (1998 = 100)"),
+      }];
+    },
+
+    "najmy": () => {
+      const ctx = document.getElementById("chart-najmy") as HTMLCanvasElement;
+      return [ctx, {
+        type: "line",
+        data: {
+          labels: rentData.labels,
           datasets: [{
-            label: housingData.datasets[0].label,
-            data: housingData.datasets[0].data,
-            borderColor: housingData.datasets[0].color,
-            backgroundColor: housingData.datasets[0].color + "20",
-            fill: true,
-            tension: 0.3,
-            pointRadius: 3,
-            pointHoverRadius: 6,
-            borderWidth: 2.5,
+            ...lineDataset(rentData.datasets[0]),
+            backgroundColor: rentData.datasets[0].color + "20",
           }],
         },
-        options: lineOptions("Násobky ročního platu"),
+        options: lineOptions("% čisté mzdy"),
+      }];
+    },
+
+    "vystavba": () => {
+      const ctx = document.getElementById("chart-vystavba") as HTMLCanvasElement;
+      return [ctx, {
+        type: "line",
+        data: {
+          labels: constructionData.labels,
+          datasets: constructionData.datasets.map(ds => lineDataset(ds)),
+        },
+        options: lineOptions("Počet bytů"),
       }];
     },
 
@@ -205,17 +617,7 @@ import taxTimeData from "../data/tax-burden-time.json";
         data: {
           labels: demoData.labels,
           datasets: [
-            {
-              label: demoData.datasets[0].label,
-              data: demoData.datasets[0].data,
-              borderColor: demoData.datasets[0].color,
-              backgroundColor: demoData.datasets[0].color + "15",
-              fill: true,
-              tension: 0.3,
-              pointRadius: 3,
-              pointHoverRadius: 6,
-              borderWidth: 2.5,
-            },
+            lineDataset(demoData.datasets[0]),
             {
               label: demoData.datasets[1].label,
               data: demoData.datasets[1].data,
@@ -231,98 +633,22 @@ import taxTimeData from "../data/tax-burden-time.json";
       }];
     },
 
-    "statni-dluh": () => {
-      const ctx = document.getElementById("chart-statni-dluh") as HTMLCanvasElement;
+    "zdravotnictvi": () => {
+      const ctx = document.getElementById("chart-zdravotnictvi") as HTMLCanvasElement;
       return [ctx, {
         type: "bar",
         data: {
-          labels: debtData.labels,
-          datasets: [
-            {
-              type: "bar" as const,
-              label: debtData.datasets[0].label,
-              data: debtData.datasets[0].data,
-              backgroundColor: debtData.datasets[0].color + "80",
-              borderColor: debtData.datasets[0].color,
-              borderWidth: 1,
-              borderRadius: 4,
-              yAxisID: "y",
-            },
-            {
-              type: "line" as const,
-              label: debtData.datasets[1].label,
-              data: debtData.datasets[1].data,
-              borderColor: debtData.datasets[1].color,
-              backgroundColor: "transparent",
-              borderWidth: 2.5,
-              pointRadius: 4,
-              pointHoverRadius: 7,
-              tension: 0.3,
-              yAxisID: "y1",
-            },
-          ],
-        },
-        options: {
-          ...baseOptions(),
-          scales: {
-            x: gridStyle(),
-            y: {
-              ...gridStyle(),
-              position: "left" as const,
-              title: { display: true, text: "mld. Kč", color: "#888" },
-            },
-            y1: {
-              ...gridStyle(),
-              position: "right" as const,
-              title: { display: true, text: "tis. Kč / obyvatel", color: "#888" },
-              grid: { display: false },
-            },
-          },
-        },
-      }];
-    },
-
-    "najmy": () => {
-      const ctx = document.getElementById("chart-najmy") as HTMLCanvasElement;
-      return [ctx, {
-        type: "line",
-        data: {
-          labels: rentData.labels,
-          datasets: [{
-            label: rentData.datasets[0].label,
-            data: rentData.datasets[0].data,
-            borderColor: rentData.datasets[0].color,
-            backgroundColor: rentData.datasets[0].color + "20",
-            fill: true,
-            tension: 0.3,
-            pointRadius: 3,
-            pointHoverRadius: 6,
-            borderWidth: 2.5,
-          }],
-        },
-        options: lineOptions("% čisté mzdy"),
-      }];
-    },
-
-    "vystavba": () => {
-      const ctx = document.getElementById("chart-vystavba") as HTMLCanvasElement;
-      return [ctx, {
-        type: "line",
-        data: {
-          labels: constructionData.labels,
-          datasets: constructionData.datasets.map(ds => ({
+          labels: healthData.labels,
+          datasets: healthData.datasets.map(ds => ({
             label: ds.label,
             data: ds.data,
+            backgroundColor: ds.color + "cc",
             borderColor: ds.color,
-            backgroundColor: ds.color + "15",
-            fill: true,
-            tension: 0.3,
-            pointRadius: 3,
-            pointHoverRadius: 6,
-            borderWidth: 2.5,
+            borderWidth: 1,
+            borderRadius: 4,
           })),
         },
-        options: lineOptions("Počet bytů"),
+        options: groupedBarOptions(""),
       }];
     },
 
@@ -333,15 +659,8 @@ import taxTimeData from "../data/tax-burden-time.json";
         data: {
           labels: pensionData.labels,
           datasets: [{
-            label: pensionData.datasets[0].label,
-            data: pensionData.datasets[0].data,
-            borderColor: pensionData.datasets[0].color,
+            ...lineDataset(pensionData.datasets[0]),
             backgroundColor: pensionData.datasets[0].color + "20",
-            fill: true,
-            tension: 0.3,
-            pointRadius: 3,
-            pointHoverRadius: 6,
-            borderWidth: 2.5,
           }],
         },
         options: lineOptions("% hrubé mzdy"),
@@ -399,51 +718,51 @@ import taxTimeData from "../data/tax-burden-time.json";
       }];
     },
 
-    "zdaneni-prace": () => {
-      const ctx = document.getElementById("chart-zdaneni-prace") as HTMLCanvasElement;
+    "statni-dluh": () => {
+      const ctx = document.getElementById("chart-statni-dluh") as HTMLCanvasElement;
       return [ctx, {
-        type: "doughnut",
+        type: "bar",
         data: {
-          labels: laborTaxData.labels,
-          datasets: [{
-            data: laborTaxData.data,
-            backgroundColor: laborTaxData.colors,
-            borderColor: "#0a0a0a",
-            borderWidth: 2,
-            hoverOffset: 8,
-          }],
+          labels: debtData.labels,
+          datasets: [
+            {
+              type: "bar" as const,
+              label: debtData.datasets[0].label,
+              data: debtData.datasets[0].data,
+              backgroundColor: debtData.datasets[0].color + "80",
+              borderColor: debtData.datasets[0].color,
+              borderWidth: 1,
+              borderRadius: 4,
+              yAxisID: "y",
+            },
+            {
+              type: "line" as const,
+              label: debtData.datasets[1].label,
+              data: debtData.datasets[1].data,
+              borderColor: debtData.datasets[1].color,
+              backgroundColor: "transparent",
+              borderWidth: 2.5,
+              pointRadius: 4,
+              pointHoverRadius: 7,
+              tension: 0.3,
+              yAxisID: "y1",
+            },
+          ],
         },
         options: {
-          responsive: true,
-          maintainAspectRatio: false,
-          cutout: "55%",
-          animation: { duration: 1200, easing: "easeOutQuart" as const },
-          plugins: {
-            legend: {
-              display: true,
-              position: "bottom" as const,
-              labels: {
-                color: "#e0e0e0",
-                font: { size: window.innerWidth > 640 ? 12 : 10 },
-                boxWidth: 12,
-                padding: 16,
-              },
+          ...baseOptions(),
+          scales: {
+            x: gridStyle(),
+            y: {
+              ...gridStyle(),
+              position: "left" as const,
+              title: { display: true, text: "mld. Kč", color: "#888" },
             },
-            tooltip: {
-              backgroundColor: "#1a1a1a",
-              titleColor: "#fff",
-              bodyColor: "#e0e0e0",
-              borderColor: "#333",
-              borderWidth: 1,
-              cornerRadius: 8,
-              padding: 12,
-              callbacks: {
-                label: (ctx: any) => {
-                  const val = ctx.raw as number;
-                  const pct = laborTaxData.percentages[ctx.dataIndex];
-                  return ` ${ctx.label}: ${val.toLocaleString("cs-CZ")} Kč (${pct} %)`;
-                },
-              },
+            y1: {
+              ...gridStyle(),
+              position: "right" as const,
+              title: { display: true, text: "tis. Kč / obyvatel", color: "#888" },
+              grid: { display: false },
             },
           },
         },
@@ -475,97 +794,67 @@ import taxTimeData from "../data/tax-burden-time.json";
         type: "line",
         data: {
           labels: taxTimeData.labels,
-          datasets: taxTimeData.datasets.map(ds => ({
-            label: ds.label,
-            data: ds.data,
-            borderColor: ds.color,
-            backgroundColor: ds.color + "15",
-            fill: true,
-            tension: 0.3,
-            pointRadius: 3,
-            pointHoverRadius: 6,
-            borderWidth: 2.5,
-          })),
+          datasets: taxTimeData.datasets.map(ds => lineDataset(ds)),
         },
         options: lineOptions("Tax wedge (%)"),
       }];
     },
 
-    "dane": () => {
-      const ctx = document.getElementById("chart-dane") as HTMLCanvasElement;
-      const colors = taxData.datasets[0].colors;
+    "produktivita": () => {
+      const ctx = document.getElementById("chart-produktivita") as HTMLCanvasElement;
+      return [ctx, {
+        type: "line",
+        data: {
+          labels: productivityData.labels,
+          datasets: productivityData.datasets.map(ds => lineDataset(ds)),
+        },
+        options: lineOptions("EUR / hodinu (PPS)"),
+      }];
+    },
+
+    "skolstvi": () => {
+      const ctx = document.getElementById("chart-skolstvi") as HTMLCanvasElement;
       return [ctx, {
         type: "bar",
         data: {
-          labels: taxData.labels,
-          datasets: [{
-            label: taxData.datasets[0].label,
-            data: taxData.datasets[0].data,
-            backgroundColor: colors.map((c: string) => c + "cc"),
-            borderColor: colors,
+          labels: educationData.labels,
+          datasets: educationData.datasets.map(ds => ({
+            label: ds.label,
+            data: ds.data,
+            backgroundColor: ds.color + "cc",
+            borderColor: ds.color,
             borderWidth: 1,
             borderRadius: 4,
-          }],
+          })),
         },
-        options: {
-          ...baseOptions(),
-          indexAxis: "y" as const,
-          scales: {
-            x: {
-              ...gridStyle(),
-              title: { display: true, text: "%", color: "#888" },
-              min: 0,
-              max: 55,
-            },
-            y: gridStyle(),
-          },
+        options: groupedBarOptions(""),
+      }];
+    },
+
+    "vyzkum": () => {
+      const ctx = document.getElementById("chart-vyzkum") as HTMLCanvasElement;
+      return [ctx, {
+        type: "line",
+        data: {
+          labels: rdData.labels,
+          datasets: rdData.datasets.map(ds => lineDataset(ds)),
         },
+        options: lineOptions("% HDP"),
+      }];
+    },
+
+    "korupce-digital": () => {
+      const ctx = document.getElementById("chart-korupce-digital") as HTMLCanvasElement;
+      return [ctx, {
+        type: "line",
+        data: {
+          labels: corruptionData.labels,
+          datasets: corruptionData.datasets.map(ds => lineDataset(ds)),
+        },
+        options: lineOptions("CPI (0–100)"),
       }];
     },
   };
-
-  function baseOptions(): any {
-    return {
-      responsive: true,
-      maintainAspectRatio: false,
-      animation: { duration: 1200, easing: "easeOutQuart" as const },
-      plugins: {
-        legend: {
-          display: window.innerWidth > 640,
-          labels: { color: "#e0e0e0", font: { size: 12 }, boxWidth: 12, padding: 20 },
-        },
-        tooltip: {
-          backgroundColor: "#1a1a1a",
-          titleColor: "#fff",
-          bodyColor: "#e0e0e0",
-          borderColor: "#333",
-          borderWidth: 1,
-          cornerRadius: 8,
-          padding: 12,
-        },
-      },
-    };
-  }
-
-  function gridStyle(): any {
-    return {
-      ticks: { color: "#666", font: { size: 11 } },
-      grid: { color: "#1a1a1a" },
-    };
-  }
-
-  function lineOptions(yTitle: string): any {
-    return {
-      ...baseOptions(),
-      scales: {
-        x: gridStyle(),
-        y: {
-          ...gridStyle(),
-          title: { display: true, text: yTitle, color: "#888" },
-        },
-      },
-    };
-  }
 
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {

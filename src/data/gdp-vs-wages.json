@@ -1,0 +1,22 @@
+{
+  "title": "HDP vs. mzdy — propast v konvergenci",
+  "description": "HDP na obyvatele dosáhlo 84 % průměru EU, ale mzdy jen 62 %. Česko vyrábí skoro jako západ, platí jako východ.",
+  "source": {
+    "name": "Eurostat — GDP per capita in PPS & Structure of Earnings Survey 2023",
+    "url": "https://ec.europa.eu/eurostat/databrowser/view/tec00114/default/table"
+  },
+  "note": "HDP v PPS, mzdy přepočtené na EUR dle PPP. Rok 2023.",
+  "labels": ["Česko", "Německo", "Polsko", "Slovensko", "Rakousko", "EU průměr"],
+  "datasets": [
+    {
+      "label": "HDP na obyvatele (% EU)",
+      "data": [84, 118, 77, 72, 117, 100],
+      "color": "#00d4aa"
+    },
+    {
+      "label": "Průměrná mzda (% EU)",
+      "data": [62, 120, 53, 58, 115, 100],
+      "color": "#ff3e3e"
+    }
+  ]
+}

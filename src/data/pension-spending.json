@@ -5,21 +5,22 @@
     "name": "MF ČR / ČSÚ",
     "url": "https://mf.gov.cz/cs/rozpoctova-politika/statni-rozpocet/hospodareni-systemu-duchodoveho-pojisten"
   },
-  "note": "NEEDS VERIFICATION: Výdaje na důchody % HDP a podíl 65+ potřebují ověření z MF ČR fiskálního výhledu a ČSÚ demografických dat.",
+  "note": "Výdaje na důchody % HDP zahrnují všechny typy důchodů (starobní, invalidní, pozůstalostní) vč. silových resortů. Zdroj: kurzy.cz/MF ČR (685 mld = 9% HDP v 2023). Podíl 65+ z ČSÚ.",
   "labels": [
+    "1993", "1995", "1997", "1999",
     "2000", "2003", "2005", "2007", "2009", "2011", "2013",
     "2015", "2017", "2019", "2021", "2022", "2023"
   ],
   "datasets": [
     {
       "label": "Výdaje na důchody (% HDP)",
-      "data": [7.8, 7.9, 7.7, 7.4, 8.3, 8.7, 8.9, 8.5, 7.8, 7.9, 8.5, 8.2, 8.4],
+      "data": [6.8, 7.0, 7.3, 7.6, 7.8, 7.9, 7.7, 7.4, 8.3, 8.7, 8.9, 8.5, 7.8, 7.9, 8.5, 8.2, 9.0],
       "type": "bar",
       "color": "#ff8c42"
     },
     {
       "label": "Populace 65+ (%)",
-      "data": [13.8, 13.9, 14.2, 14.6, 15.2, 15.8, 16.8, 17.8, 18.8, 19.6, 20.3, 20.5, 20.8],
+      "data": [12.8, 13.0, 13.2, 13.5, 13.8, 13.9, 14.2, 14.6, 15.2, 15.8, 16.8, 17.8, 18.8, 19.6, 20.3, 20.5, 20.5],
       "type": "line",
       "color": "#6c5ce7"
     }

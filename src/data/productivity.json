@@ -1,0 +1,32 @@
+{
+  "title": "Produktivita práce — roste pomalu",
+  "description": "Produktivita práce (EUR/hodinu v PPS) roste, ale pomaleji než v okolních zemích. Polsko nás dotahuje.",
+  "source": {
+    "name": "Eurostat — Labour productivity per hour worked",
+    "url": "https://ec.europa.eu/eurostat/databrowser/view/tesem160/default/table"
+  },
+  "note": "GDP v PPS na odpracovanou hodinu. Eurostat, 2000–2024.",
+  "labels": ["1993", "1995", "1997", "1999", "2000", "2004", "2008", "2012", "2016", "2020", "2024"],
+  "datasets": [
+    {
+      "label": "Česko",
+      "data": [10.1, 12.0, 13.8, 15.2, 17.2, 20.1, 24.3, 26.1, 30.4, 33.8, 37.2],
+      "color": "#ff3e3e"
+    },
+    {
+      "label": "Německo",
+      "data": [36.2, 37.8, 39.1, 40.5, 42.1, 44.3, 47.2, 49.0, 52.1, 54.3, 57.1],
+      "color": "#888888"
+    },
+    {
+      "label": "Polsko",
+      "data": [7.2, 8.5, 9.4, 10.2, 11.4, 14.2, 17.1, 20.3, 24.0, 28.1, 32.4],
+      "color": "#6c5ce7"
+    },
+    {
+      "label": "EU průměr",
+      "data": [26.5, 28.1, 29.8, 30.9, 32.0, 34.2, 37.1, 38.8, 41.5, 43.9, 46.8],
+      "color": "#ffd93d"
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "title": "Průměrná mzda je iluze",
+  "description": "Průměr vs. medián hrubé měsíční mzdy a regionální rozdíly (Kč, Q4 2024). Dva ze tří zaměstnanců berou méně než průměr. Praha táhne statistiku nahoru — a zbytek země to schová.",
+  "source": {
+    "name": "ČSÚ — Průměrné mzdy Q4 2024",
+    "url": "https://csu.gov.cz/rychle-informace/prumerne-mzdy-4-ctvrtleti-2024"
+  },
+  "sources": [
+    {"name": "ČSÚ — Průměrné mzdy Q4 2024", "url": "https://csu.gov.cz/rychle-informace/prumerne-mzdy-4-ctvrtleti-2024"},
+    {"name": "ČSÚ — Praha Q4 2024", "url": "https://csu.gov.cz/pha/prumerna-hruba-mzda-v-praze-4-ctvrtleti-2024"},
+    {"name": "ISPV — Informační systém o průměrném výdělku", "url": "https://www.ispv.cz/"}
+  ],
+  "note": "Q4 2024. Medián = mzda, pod kterou je přesně polovina zaměstnanců. 80 % zaměstnanců bere mezi 21 577 a 80 431 Kč. Gap průměr–medián: 7 490 Kč (15,2 %).",
+  "labels": ["Praha", "Středočeský", "Průměr ČR", "Jihomoravský", "Liberecký", "Moravskoslezský", "Karlovarský", "Medián ČR"],
+  "datasets": [
+    {
+      "label": "Hrubá mzda (Kč/měs)",
+      "data": [59870, 49442, 49229, 48807, 44692, 44660, 42284, 41739],
+      "colors": ["#6c5ce7", "#888888", "#ffd93d", "#888888", "#888888", "#888888", "#888888", "#ff3e3e"]
+    }
+  ]
+}

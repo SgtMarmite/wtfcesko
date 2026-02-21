@@ -1,0 +1,22 @@
+{
+  "title": "Na školství dáváme méně než ostatní",
+  "description": "Výdaje na vzdělávání (% HDP) a platy učitelů relativně k průměrné mzdě. Česko investuje podprůměrně — a učitelé to vidí na výplatní pásce.",
+  "source": {
+    "name": "OECD Education at a Glance 2024",
+    "url": "https://www.oecd.org/education/education-at-a-glance/"
+  },
+  "note": "Veřejné výdaje na vzdělávání jako % HDP, 2022. Platy učitelů: zákonný plat zkušeného učitele ZŠ relativně k průměrné mzdě v zemi.",
+  "labels": ["Česko", "Německo", "Polsko", "Slovensko", "Rakousko", "Finsko", "OECD průměr"],
+  "datasets": [
+    {
+      "label": "Výdaje na vzdělávání (% HDP)",
+      "data": [4.4, 4.7, 5.0, 4.2, 5.2, 5.9, 5.1],
+      "color": "#6c5ce7"
+    },
+    {
+      "label": "Platy učitelů (% průměrné mzdy)",
+      "data": [95, 140, 85, 75, 110, 115, 100],
+      "color": "#00d4aa"
+    }
+  ]
+}

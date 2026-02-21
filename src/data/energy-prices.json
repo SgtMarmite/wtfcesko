@@ -1,0 +1,17 @@
+{
+  "title": "Ceny elektřiny — vyrábíme, ale platíme",
+  "description": "Cena elektřiny pro domácnosti v EU (ct/kWh, 2024). Česko je pod průměrem EU, ale nad východními sousedy — a při našich mzdách je relativní zátěž vyšší než v Německu.",
+  "source": {
+    "name": "Eurostat — Electricity prices for household consumers",
+    "url": "https://ec.europa.eu/eurostat/databrowser/view/nrg_pc_204/default/table"
+  },
+  "note": "Včetně daní a poplatků, band DC (2 500–5 000 kWh/rok). 2. pololetí 2024.",
+  "labels": ["Dánsko", "Německo", "Belgie", "Irsko", "Rakousko", "EU průměr", "Česko", "Francie", "Slovensko", "Polsko", "Maďarsko"],
+  "datasets": [
+    {
+      "label": "ct/kWh",
+      "data": [37.5, 35.8, 33.2, 31.4, 30.1, 28.1, 25.8, 23.6, 22.1, 18.2, 11.2],
+      "colors": ["#888888", "#888888", "#888888", "#888888", "#888888", "#ffd93d", "#ff3e3e", "#888888", "#888888", "#888888", "#888888"]
+    }
+  ]
+}

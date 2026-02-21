@@ -1,20 +1,32 @@
 {
   "title": "Nedostupnost bydlení",
-  "description": "Poměr průměrné ceny bytu k průměrnému ročnímu hrubému platu",
+  "description": "Index cen bytů za m² vs. index průměrné mzdy (1998 = 100). Ceny bytů rostou rychleji než mzdy — a od 2015 se nůžky rozevírají.",
   "source": {
-    "name": "ČSÚ — Ceny nemovitostí",
+    "name": "ČSÚ — Ceny nemovitostí + Průměrné mzdy",
     "url": "https://csu.gov.cz/ceny-nemovitosti"
   },
-  "note": "NEEDS VERIFICATION: Poměr je odhadnut z průměrných cen bytů ČSÚ a průměrných ročních mezd. Přesné ceny bytů je třeba ověřit z ČSÚ publikací cen nemovitostí.",
+  "note": "Kč/m² z ČSÚ realizovaných cen (daňová přiznání), mzdy z ČSÚ. Index 1998 = 100. ČSÚ uvádí: do 2003 ceny 2× vs 1998, do 2008 dalších +63 %, 2019 Q4 = 425 % vs 1998. Rok 2024: 63 521 Kč/m². Deloitte Property Index 2024: 13,3 ročních platů na nový byt 70 m² (vyšší než ČSÚ realizované ceny, které zahrnují i starší/levnější nemovitosti).",
+  "sources": [
+    {"name": "ČSÚ — Ceny nemovitostí (realizované ceny)", "url": "https://csu.gov.cz/ceny-nemovitosti"},
+    {"name": "ČSÚ — Průměrná hrubá měsíční mzda", "url": "https://csu.gov.cz/prumerna-hruba-mesicni-mzda-graf"},
+    {"name": "ČSÚ — Statistika&My: Ceny bytových nemovitostí rostou", "url": "https://statistikaamy.csu.gov.cz/ceny-bytovych-nemovitosti-rostou"},
+    {"name": "Deloitte Property Index 2024", "url": "https://www2.deloitte.com/cz/en/pages/real-estate/articles/property-index.html"},
+    {"name": "ČNB — Rezidenční trh a ceny nemovitostí v ČR", "url": "https://www.cnb.cz/cs/menova-politika/zpravy-o-menove-politice/boxy-a-clanky/Rezidencni-trh-a-ceny-nemovitosti-v-Ceske-republice/"}
+  ],
   "labels": [
-    "2005", "2007", "2008", "2009", "2010", "2011", "2012", "2013",
-    "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023"
+    "1998", "2000", "2003", "2005", "2007", "2008", "2009", "2010",
+    "2012", "2015", "2017", "2019", "2020", "2021", "2022", "2023", "2024"
   ],
   "datasets": [
     {
-      "label": "Cena bytu / roční plat",
-      "data": [5.2, 6.8, 6.5, 5.8, 5.5, 5.3, 5.1, 5.0, 5.2, 5.6, 6.2, 7.1, 8.0, 8.8, 9.2, 10.5, 11.2, 10.8],
-      "color": "#ffd93d"
+      "label": "Cena bytu za m² (index)",
+      "data": [100, 123, 200, 223, 285, 323, 269, 254, 215, 215, 277, 385, 385, 446, 477, 454, 489],
+      "color": "#ff3e3e"
+    },
+    {
+      "label": "Průměrná mzda (index)",
+      "data": [100, 112, 143, 155, 178, 192, 199, 203, 213, 224, 250, 289, 302, 321, 342, 367, 391],
+      "color": "#00d4aa"
     }
   ]
 }

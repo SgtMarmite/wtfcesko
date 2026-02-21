@@ -1,0 +1,22 @@
+{
+  "title": "Zdravotnictví pod tlakem",
+  "description": "Průměrný věk praktických lékařů v ČR přesahuje 55 let. Statisíce lidí nemají svého lékaře — a ti stávající odcházejí do důchodu.",
+  "source": {
+    "name": "ÚZIS ČR — Registr lékařů, Median 2024",
+    "url": "https://www.uzis.cz/index.php?pg=vystupy"
+  },
+  "note": "Registrovaní pacienti bez praktického lékaře dle ÚZIS 2024. Průměrný věk PL z Registru lékařů.",
+  "labels": ["Pacienti bez PL (tis.)", "Průměrný věk PL (let)", "PL nad 60 let (%)", "Výdaje na zdravotnictví (% HDP)"],
+  "datasets": [
+    {
+      "label": "Česko",
+      "data": [340, 55.2, 38, 7.8],
+      "color": "#ff3e3e"
+    },
+    {
+      "label": "Referenční hodnota",
+      "data": [0, 48, 20, 9.9],
+      "color": "#888888"
+    }
+  ]
+}

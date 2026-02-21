@@ -1,64 +1,186 @@
 ---
-const sections = [
-  { id: "hero", label: "Úvod" },
-  { id: "kupni-sila", label: "Kupní síla" },
-  { id: "bydleni", label: "Bydlení" },
-  { id: "najmy", label: "Nájmy" },
-  { id: "vystavba", label: "Výstavba" },
-  { id: "demografie", label: "Demografie" },
-  { id: "duchody", label: "Důchody" },
-  { id: "vydaje-duchody", label: "Výdaje důchody" },
-  { id: "statni-dluh", label: "Státní dluh" },
-  { id: "zdaneni-prace", label: "Zdanění práce" },
-  { id: "obsluha-dluhu", label: "Obsluha dluhu" },
-  { id: "dane-cas", label: "Daně v čase" },
-  { id: "dane", label: "Daně srovnání" },
+const acts = [
+  {
+    id: "akt-1",
+    label: "Iluze růstu",
+    sections: [
+      { id: "kupni-sila", label: "Kupní síla" },
+      { id: "mzdy-realita", label: "Mzdy realita" },
+      { id: "hdp-vs-mzdy", label: "HDP vs mzdy" },
+      { id: "zdaneni-prace", label: "Zdanění práce" },
+      { id: "dane", label: "Daně srovnání" },
+    ],
+  },
+  {
+    id: "akt-2",
+    label: "Co si koupíš",
+    sections: [
+      { id: "potraviny", label: "Potraviny" },
+      { id: "energie", label: "Energie" },
+      { id: "bydleni", label: "Bydlení" },
+      { id: "najmy", label: "Nájmy" },
+      { id: "vystavba", label: "Výstavba" },
+    ],
+  },
+  {
+    id: "akt-3",
+    label: "Důsledky",
+    sections: [
+      { id: "demografie", label: "Demografie" },
+      { id: "zdravotnictvi", label: "Zdravotnictví" },
+      { id: "duchody", label: "Důchody" },
+      { id: "vydaje-duchody", label: "Výdaje důchody" },
+    ],
+  },
+  {
+    id: "akt-4",
+    label: "Stát na to nemá",
+    sections: [
+      { id: "statni-dluh", label: "Státní dluh" },
+      { id: "obsluha-dluhu", label: "Obsluha dluhu" },
+      { id: "dane-cas", label: "Daně v čase" },
+    ],
+  },
+  {
+    id: "akt-5",
+    label: "Proč se nic nemění",
+    sections: [
+      { id: "produktivita", label: "Produktivita" },
+      { id: "skolstvi", label: "Školství" },
+      { id: "vyzkum", label: "Výzkum" },
+      { id: "korupce-digital", label: "Korupce" },
+    ],
+  },
 ];
+
+const allSections = [{ id: "hero", label: "Úvod" }, ...acts.flatMap(a => [
+  { id: a.id, label: a.label },
+  ...a.sections,
+])];
 ---
 
-<nav class="fixed right-4 md:right-8 top-1/2 -translate-y-1/2 z-50 hidden md:flex flex-col gap-2" aria-label="Navigace sekcí">
-  {sections.map((s) => (
+<!-- Desktop: acts + nested sections -->
+<nav
+  class="fixed right-4 md:right-8 top-1/2 -translate-y-1/2 z-50 hidden md:flex flex-col gap-4"
+  aria-label="Navigace sekcí"
+>
+  {acts.map((act) => (
+    <div class="nav-act group relative flex flex-col items-end" data-act={act.id}>
+      <a
+        href={`#${act.id}`}
+        class="nav-act-dot flex items-center justify-end mb-1"
+        data-section={act.id}
+        aria-label={act.label}
+      >
+        <span class="opacity-0 group-hover:opacity-100 transition-opacity duration-200
+                      text-text text-xs mr-3 whitespace-nowrap pointer-events-none font-bold">
+          {act.label}
+        </span>
+        <span class="block w-3 h-3 rounded-full border border-text-muted bg-transparent
+                      transition-all duration-300 group-hover:border-accent-red group-hover:bg-accent-red/30">
+        </span>
+      </a>
+      <div class="nav-sections flex flex-col gap-1 overflow-hidden max-h-0 group-hover:max-h-40
+                  transition-all duration-300 ease-in-out">
+        {act.sections.map((s) => (
+          <a
+            href={`#${s.id}`}
+            class="nav-dot flex items-center justify-end"
+            data-section={s.id}
+            aria-label={s.label}
+          >
+            <span class="opacity-0 group-hover:opacity-100 transition-opacity duration-200
+                          text-text-muted text-xs mr-3 whitespace-nowrap pointer-events-none">
+              {s.label}
+            </span>
+            <span class="block w-2 h-2 rounded-full border border-text-muted/50 bg-transparent
+                          transition-all duration-300">
+            </span>
+          </a>
+        ))}
+      </div>
+    </div>
+  ))}
+</nav>
+
+<!-- Mobile: 5 dots only -->
+<nav
+  class="fixed bottom-4 left-1/2 -translate-x-1/2 z-50 flex md:hidden gap-3 bg-bg-card/80 backdrop-blur-sm
+         border border-border rounded-full px-4 py-2"
+  aria-label="Navigace aktů"
+>
+  {acts.map((act) => (
     <a
-      href={`#${s.id}`}
-      class="nav-dot group relative flex items-center justify-end"
-      data-section={s.id}
-      aria-label={s.label}
+      href={`#${act.id}`}
+      class="nav-mobile-dot block w-2.5 h-2.5 rounded-full border border-text-muted bg-transparent
+             transition-all duration-300"
+      data-act={act.id}
+      aria-label={act.label}
     >
-      <span class="opacity-0 group-hover:opacity-100 transition-opacity duration-200
-                    text-text text-xs mr-3 whitespace-nowrap pointer-events-none">
-        {s.label}
-      </span>
-      <span class="block w-2.5 h-2.5 rounded-full border border-text-muted bg-transparent
-                    transition-all duration-300 group-hover:border-accent-red
-                    group-hover:bg-accent-red/30">
-      </span>
     </a>
   ))}
 </nav>
 
 <script>
-  const dots = document.querySelectorAll<HTMLAnchorElement>('.nav-dot');
-  const sections = Array.from(dots).map(d => d.dataset.section!);
+  const allDots = document.querySelectorAll<HTMLAnchorElement>('.nav-dot, .nav-act-dot');
+  const mobileDots = document.querySelectorAll<HTMLAnchorElement>('.nav-mobile-dot');
+  const actGroups = document.querySelectorAll<HTMLElement>('.nav-act');
+
+  const sectionToAct: Record<string, string> = {};
+  actGroups.forEach(group => {
+    const actId = group.dataset.act!;
+    group.querySelectorAll<HTMLAnchorElement>('.nav-dot').forEach(dot => {
+      sectionToAct[dot.dataset.section!] = actId;
+    });
+    sectionToAct[actId] = actId;
+  });
+
+  let currentSection = '';
+  let currentAct = '';
 
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        dots.forEach(dot => {
-          const inner = dot.querySelector('span:last-child') as HTMLElement;
-          if (dot.dataset.section === entry.target.id) {
-            inner.style.backgroundColor = 'var(--color-accent-red)';
-            inner.style.borderColor = 'var(--color-accent-red)';
-          } else {
-            inner.style.backgroundColor = 'transparent';
-            inner.style.borderColor = '';
-          }
-        });
-      }
+      if (!entry.isIntersecting) return;
+      currentSection = entry.target.id;
+      currentAct = sectionToAct[currentSection] || '';
+
+      allDots.forEach(dot => {
+        const inner = dot.querySelector('span:last-child') as HTMLElement;
+        if (dot.dataset.section === currentSection) {
+          inner.style.backgroundColor = 'var(--color-accent-red)';
+          inner.style.borderColor = 'var(--color-accent-red)';
+        } else {
+          inner.style.backgroundColor = 'transparent';
+          inner.style.borderColor = '';
+        }
+      });
+
+      actGroups.forEach(group => {
+        const actDot = group.querySelector('.nav-act-dot span:last-child') as HTMLElement;
+        if (group.dataset.act === currentAct) {
+          actDot.style.borderColor = 'var(--color-accent-red)';
+          actDot.style.backgroundColor = 'var(--color-accent-red)';
+        } else {
+          actDot.style.borderColor = '';
+          actDot.style.backgroundColor = 'transparent';
+        }
+      });
+
+      mobileDots.forEach(dot => {
+        if (dot.dataset.act === currentAct) {
+          dot.style.backgroundColor = 'var(--color-accent-red)';
+          dot.style.borderColor = 'var(--color-accent-red)';
+        } else {
+          dot.style.backgroundColor = 'transparent';
+          dot.style.borderColor = '';
+        }
+      });
     });
   }, { threshold: 0.3 });
 
-  sections.forEach(id => {
-    const el = document.getElementById(id);
-    if (el) observer.observe(el);
+  document.querySelectorAll<HTMLElement>('section[id], div[id]').forEach(el => {
+    if (el.id && (sectionToAct[el.id] !== undefined || el.id === 'hero')) {
+      observer.observe(el);
+    }
   });
 </script>
