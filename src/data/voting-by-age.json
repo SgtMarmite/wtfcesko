@@ -1,0 +1,16 @@
+{
+  "title": "Jak volí generace",
+  "description": "Volební chování podle věkových skupin — sněmovní volby 2021",
+  "source": {
+    "name": "PAQ Research — Analýza volebního chování 2021 (N=3 891)",
+    "url": "https://www.paqresearch.cz/post/analyza_volby_2021/"
+  },
+  "labels": ["18–34 let", "35–59 let", "60+ let"],
+  "datasets": [
+    { "label": "ANO", "data": [13, 24, 47], "color": "#3b82f6" },
+    { "label": "SPOLU", "data": [30, 33, 18], "color": "#6366f1" },
+    { "label": "PirSTAN", "data": [34, 18, 6], "color": "#22d3ee" },
+    { "label": "SPD", "data": [5, 12, 12], "color": "#eab308" },
+    { "label": "Ostatní", "data": [18, 13, 17], "color": "#6b7280" }
+  ]
+}

@@ -49,6 +49,14 @@ const acts = [
       { id: "skolstvi", label: "Školství" },
       { id: "vyzkum", label: "Výzkum" },
       { id: "korupce-digital", label: "Korupce" },
+      { id: "volby-vek", label: "Volby" },
+    ],
+  },
+  {
+    id: "akt-6",
+    label: "Co nám slibovali",
+    sections: [
+      { id: "sliby", label: "Sliby" },
     ],
   },
 ];
@@ -80,7 +88,7 @@ const allSections = [{ id: "hero", label: "Úvod" }, ...acts.flatMap(a => [
                       transition-all duration-300 group-hover:border-accent-red group-hover:bg-accent-red/30">
         </span>
       </a>
-      <div class="nav-sections flex flex-col gap-1 overflow-hidden max-h-0 group-hover:max-h-40
+      <div class="nav-sections flex flex-col gap-1 overflow-hidden max-h-0 group-hover:max-h-48
                   transition-all duration-300 ease-in-out">
         {act.sections.map((s) => (
           <a

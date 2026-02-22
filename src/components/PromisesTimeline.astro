@@ -1,0 +1,259 @@
+---
+const verdicts = {
+  splneno: { color: "text-green-400", bg: "bg-green-500/20", border: "border-green-500/40", dot: "bg-green-400",
+    label: "Splněno" },
+  castecne: { color: "text-yellow-400", bg: "bg-yellow-500/20", border: "border-yellow-500/40", dot: "bg-yellow-400",
+    label: "Částečně" },
+  poruseno: { color: "text-red-400", bg: "bg-red-500/20", border: "border-red-500/40", dot: "bg-red-400",
+    label: "Porušeno" },
+} as const;
+
+const governments = [
+  {
+    name: "Vláda Andreje Babiše",
+    period: "2018–2021",
+    color: "border-blue-500/40",
+    promises: [
+      {
+        topic: "Daně",
+        quote: "Nebudeme zvyšovat daňovou zátěž",
+        source: "Programové prohlášení, 2018",
+        metric: "Tax wedge 43 → 42 %. Zrušena superhrubá mzda.",
+        verdict: "splneno" as const,
+      },
+      {
+        topic: "Bydlení",
+        quote: "Rekodifikace stavebního práva",
+        source: "Programové prohlášení, 2018",
+        metric: "Zákon schválen. Cena bytu/m²: +45 % za volební období.",
+        verdict: "splneno" as const,
+      },
+      {
+        topic: "Důchody",
+        quote: "Zvýšení důchodů",
+        source: "Programové prohlášení, 2018",
+        metric: "Důchody valorizovány. Poměr k mzdě: stabilní ~40 %.",
+        verdict: "splneno" as const,
+      },
+      {
+        topic: "Bydlení",
+        quote: "Zákon o sociálním bydlení",
+        source: "Programové prohlášení, 2018",
+        metric: "Zákon nepřijat. Nahrazen dotačním programem.",
+        verdict: "poruseno" as const,
+      },
+      {
+        topic: "Zdravotnictví",
+        quote: "Podpoříme prevenci a zdravý životní styl",
+        source: "Programové prohlášení, 2018",
+        metric: "340 tisíc lidí bez praktického lékaře. Systém prevence nevznikl.",
+        verdict: "poruseno" as const,
+      },
+      {
+        topic: "Školství",
+        quote: "Nárok na školku od 2 let",
+        source: "Programové prohlášení, 2018",
+        metric: "Zákon nepřijat. Kapacity MŠ nedostatečné.",
+        verdict: "poruseno" as const,
+      },
+      {
+        topic: "Korupce",
+        quote: "Odpolitizování státní správy",
+        source: "Programové prohlášení, 2018",
+        metric: "Zákon o úřednících nepřijat. Politické nominace pokračují.",
+        verdict: "poruseno" as const,
+      },
+      {
+        topic: "Digitalizace",
+        quote: "Digitální Česko",
+        source: "Programové prohlášení, 2018",
+        metric: "eGovernment zlepšen, ale stále pod průměrem EU.",
+        verdict: "castecne" as const,
+      },
+    ],
+  },
+  {
+    name: "Vláda Petra Fialy",
+    period: "2021–2025",
+    color: "border-purple-500/40",
+    promises: [
+      {
+        topic: "Daně",
+        quote: "Zavedeme daňovou brzdu",
+        source: "Programové prohlášení, 2022",
+        metric: "Místo snížení: konsolidační balíček zvýšil daně.",
+        verdict: "poruseno" as const,
+      },
+      {
+        topic: "Důchody",
+        quote: "Důchodová reforma",
+        source: "Programové prohlášení, 2022",
+        metric: "Posun věku odchodu. Systémová reforma nedokončena.",
+        verdict: "castecne" as const,
+      },
+      {
+        topic: "Dluh",
+        quote: "Zavedeme výdajové pravidlo",
+        source: "Programové prohlášení, 2022",
+        metric: "Dluh: 2 466 → 3 111 mld Kč. Pravidlo nepřijato.",
+        verdict: "poruseno" as const,
+      },
+      {
+        topic: "Školství",
+        quote: "Platy učitelů na 130 % průměrné mzdy",
+        source: "Programové prohlášení, 2022",
+        metric: "Platy učitelů zmrazeny. Cíl 130 % nedosažen.",
+        verdict: "poruseno" as const,
+      },
+      {
+        topic: "Rodina",
+        quote: "Zvýšíme rodičovský příspěvek",
+        source: "Programové prohlášení, 2022",
+        metric: "Zvýšení až v posledním roce mandátu. Reálná hodnota klesla s inflací.",
+        verdict: "poruseno" as const,
+      },
+      {
+        topic: "Daně",
+        quote: "Valorizace slevy na poplatníka",
+        source: "Programové prohlášení, 2022",
+        metric: "Sleva nevalorizována. Reálná hodnota klesá s inflací.",
+        verdict: "poruseno" as const,
+      },
+      {
+        topic: "Digitalizace",
+        quote: "Jednotné inkasní místo",
+        source: "Programové prohlášení, 2022",
+        metric: "Projekt odložen. Podnikatelé řeší více úřadů zvlášť.",
+        verdict: "poruseno" as const,
+      },
+      {
+        topic: "Důchody",
+        quote: "Doplňkové penzijní připojištění",
+        source: "Programové prohlášení, 2022",
+        metric: "Reforma třetího pilíře nepřijata.",
+        verdict: "poruseno" as const,
+      },
+    ],
+  },
+];
+---
+
+<section id="sliby" class="relative py-24 md:py-32 px-6">
+  <div class="max-w-5xl mx-auto">
+    <div class="mb-12 md:mb-16 max-w-2xl">
+      <div class="w-12 h-1 mb-6 bg-accent-red"></div>
+      <h2 class="font-heading text-text-heading text-3xl md:text-5xl font-bold mb-4 leading-tight">
+        Slibovali. Měřili jsme.
+      </h2>
+      <p class="text-text-muted text-base md:text-lg leading-relaxed">
+        Každá vláda slibuje změnu. Tady jsou konkrétní sliby z programových prohlášení
+        — a co se skutečně stalo.
+      </p>
+    </div>
+
+    <div class="flex flex-col gap-20">
+      {governments.map((gov) => (
+        <div>
+          <div class="flex items-baseline gap-3 mb-8">
+            <h3 class="font-heading text-text-heading text-xl md:text-2xl font-bold">{gov.name}</h3>
+            <span class="text-text-muted text-sm">{gov.period}</span>
+          </div>
+
+          {/* Desktop: grid */}
+          <div class="hidden md:grid grid-cols-4 gap-x-6 gap-y-10">
+            {gov.promises.map((p) => {
+              const v = verdicts[p.verdict];
+              return (
+                <div class="relative flex flex-col items-center text-center">
+                  <div class={`w-3 h-3 rounded-full ${v.dot} mb-4`}></div>
+                  <span class={`text-xs font-bold uppercase tracking-wider mb-2 ${v.color}`}>
+                    {p.topic}
+                  </span>
+                  <p class="text-text text-sm font-medium leading-snug">
+                    „{p.quote}"
+                  </p>
+                  <p class="text-text-muted text-xs mt-1">{p.source}</p>
+                  <p class="text-text-muted text-xs mt-3 leading-relaxed">{p.metric}</p>
+                  <span class={`inline-block mt-2 text-xs font-bold px-2 py-0.5 rounded ${v.bg} ${v.color}`}>
+                    {v.label}
+                  </span>
+                </div>
+              );
+            })}
+          </div>
+
+          {/* Mobile: vertical timeline */}
+          <div class="md:hidden relative ml-4">
+            <div class="absolute top-0 bottom-0 left-[6px] w-px bg-border"></div>
+            <div class="flex flex-col gap-8">
+              {gov.promises.map((p) => {
+                const v = verdicts[p.verdict];
+                return (
+                  <div class="relative flex gap-5">
+                    <div class={`relative z-10 mt-1 w-3.5 h-3.5 rounded-full shrink-0 ${v.dot} ring-4 ring-bg`}>
+                    </div>
+                    <div>
+                      <span class={`inline-block text-xs font-bold uppercase tracking-wider mb-1 ${v.color}`}>
+                        {p.topic}
+                      </span>
+                      <p class="text-text text-sm font-medium leading-snug">„{p.quote}"</p>
+                      <p class="text-text-muted text-xs mt-1">{p.source}</p>
+                      <p class="text-text-muted text-xs mt-2 leading-relaxed">{p.metric}</p>
+                      <span class={`inline-block mt-2 text-xs font-bold px-2 py-0.5 rounded ${v.bg} ${v.color}`}>
+                        {v.label}
+                      </span>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <div class="mt-20 pt-10 border-t border-border">
+      <h3 class="font-heading text-text-heading text-xl md:text-2xl font-bold mb-2">
+        Celkové skóre
+      </h3>
+      <p class="text-text-muted text-sm mb-8">
+        Demagog.cz hodnotil po 50 slibech z programového prohlášení každé vlády.
+        Výše ukazujeme výběr těch nejzajímavějších.
+      </p>
+      <div class="flex flex-col gap-6">
+        {[
+          { name: "Babiš 2018–2021", splneno: 44, castecne: 26, poruseno: 30 },
+          { name: "Fiala 2021–2025", splneno: 32, castecne: 28, poruseno: 40 },
+        ].map((gov) => (
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-text text-sm font-bold">{gov.name}</span>
+              <span class="text-text-muted text-xs">
+                {gov.splneno} % splněno · {gov.castecne} % částečně · {gov.poruseno} % porušeno
+              </span>
+            </div>
+            <div class="flex h-5 rounded-full overflow-hidden">
+              <div class="bg-green-500" style={`width: ${gov.splneno}%`}></div>
+              <div class="bg-yellow-500" style={`width: ${gov.castecne}%`}></div>
+              <div class="bg-red-500" style={`width: ${gov.poruseno}%`}></div>
+            </div>
+          </div>
+        ))}
+      </div>
+      <p class="text-text-muted text-xs mt-6 leading-relaxed">
+        Celé hodnocení na
+        <a href="https://demagog.cz/sliby" target="_blank" rel="noopener noreferrer"
+          class="text-text hover:text-accent-red transition-colors">Demagog.cz</a>.
+      </p>
+    </div>
+
+    <div class="mt-8 pt-6 border-t border-border">
+      <p class="text-text-muted text-xs leading-relaxed">
+        Hodnocení slibů převzato z nezávislého projektu
+        <a href="https://demagog.cz/sliby" target="_blank" rel="noopener noreferrer"
+          class="text-text hover:text-accent-red transition-colors">Demagog.cz</a>.
+        Metriky z ČSÚ, MF ČR a OECD — stejné zdroje jako v grafech výše.
+      </p>
+    </div>
+  </div>
+</section>

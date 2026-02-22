@@ -1,0 +1,46 @@
+---
+interface Props {
+  promise: string;
+  author: string;
+  source: string;
+  verdict: "poruseno" | "castecne";
+  reality: string;
+}
+
+const { promise, author, source, verdict, reality } = Astro.props;
+
+const verdictStyles = {
+  poruseno: { label: "Porušeno", color: "text-red-400", bg: "bg-red-500/20" },
+  castecne: { label: "Částečně", color: "text-yellow-400", bg: "bg-yellow-500/20" },
+} as const;
+
+const v = verdictStyles[verdict];
+---
+
+<div class="max-w-5xl mx-auto px-6 -mt-16 relative z-10">
+  <div class="ml-auto max-w-xl bg-bg-card/60 backdrop-blur-sm border border-border rounded-xl px-5 py-4">
+    <p class="text-text-muted text-xs font-bold uppercase tracking-wider mb-1.5">
+      Slíbili
+    </p>
+    <p class="text-text text-sm leading-snug">
+      „{promise}"
+    </p>
+    <p class="text-text-muted text-xs mt-1">
+      — {author}, {source}
+    </p>
+    <p class="text-text-muted text-xs mt-3 leading-relaxed">
+      {reality}
+    </p>
+    <div class="flex items-center justify-between mt-3">
+      <span class={`text-xs font-bold px-2 py-0.5 rounded ${v.bg} ${v.color}`}>
+        {v.label}
+      </span>
+      <a
+        href="#sliby"
+        class="text-text-muted text-xs hover:text-text transition-colors duration-200"
+      >
+        Více slibů &darr;
+      </a>
+    </div>
+  </div>
+</div>

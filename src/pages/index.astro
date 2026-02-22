@@ -4,6 +4,8 @@ import Hero from "../components/Hero.astro";
 import ChartSection from "../components/ChartSection.astro";
 import ActDivider from "../components/ActDivider.astro";
 import ClosingSection from "../components/ClosingSection.astro";
+import PromisesTimeline from "../components/PromisesTimeline.astro";
+import PoliticianQuote from "../components/PoliticianQuote.astro";
 import Nav from "../components/Nav.astro";
 import Footer from "../components/Footer.astro";
 import "../styles/global.css";
@@ -29,6 +31,7 @@ import educationData from "../data/education-spending.json";
 import rdData from "../data/rd-spending.json";
 import corruptionData from "../data/corruption-digital.json";
 import wageRealityData from "../data/wage-reality.json";
+import votingData from "../data/voting-by-age.json";
 ---
 
 <Layout title="WTF Česko — Co se stalo s českou ekonomikou?">
@@ -186,6 +189,7 @@ import wageRealityData from "../data/wage-reality.json";
       sourceUrl={pensionSpendData.source.url}
     />
 
+
     <!-- Akt 4: Stát na to nemá -->
     <ActDivider
       id="akt-4"
@@ -246,6 +250,13 @@ import wageRealityData from "../data/wage-reality.json";
       source={educationData.source.name}
       sourceUrl={educationData.source.url}
     />
+    <PoliticianQuote
+      promise="Platy učitelů na 130 % průměrné mzdy"
+      author="Petr Fiala"
+      source="Programové prohlášení, 2022"
+      verdict="poruseno"
+      reality="Platy učitelů zmrazeny. Cíl 130 % nedosažen."
+    />
 
     <ChartSection
       id="vyzkum"
@@ -254,6 +265,13 @@ import wageRealityData from "../data/wage-reality.json";
       accentColor="#00b4d8"
       source={rdData.source.name}
       sourceUrl={rdData.source.url}
+    />
+    <PoliticianQuote
+      promise="Podpora inovací a výzkumu"
+      author="Petr Fiala"
+      source="Programové prohlášení, 2022"
+      verdict="poruseno"
+      reality="Výdaje na R&D stále pod průměrem EU. Konkrétní opatření nepřijata."
     />
 
     <ChartSection
@@ -264,6 +282,34 @@ import wageRealityData from "../data/wage-reality.json";
       source={corruptionData.source.name}
       sourceUrl={corruptionData.source.url}
     />
+    <PoliticianQuote
+      promise="Odpolitizování státní správy"
+      author="Andrej Babiš"
+      source="Programové prohlášení, 2018"
+      verdict="poruseno"
+      reality="Zákon o úřednících nepřijat. Politické nominace pokračují."
+    />
+
+    <ChartSection
+      id="volby-vek"
+      title="Důchodci volí jinak než&nbsp;mladí"
+      description={
+        "47 % důchodců volilo ANO. Koalice vyhrály u mladých, ale senioři"
+        + " — nejdisciplinovanější voliči s nejvyšší účastí — drží status quo."
+      }
+      accentColor="#3b82f6"
+      source={votingData.source.name}
+      sourceUrl={votingData.source.url}
+    />
+
+    <ActDivider
+      id="akt-6"
+      number="06"
+      title="Co nám slibovali"
+      subtitle="Každá vláda slibuje změnu. Tady jsou výsledky."
+    />
+
+    <PromisesTimeline />
 
     <ClosingSection />
   </main>
@@ -295,76 +341,9 @@ import wageRealityData from "../data/wage-reality.json";
   import rdData from "../data/rd-spending.json";
   import corruptionData from "../data/corruption-digital.json";
   import wageRealityData from "../data/wage-reality.json";
+  import votingData from "../data/voting-by-age.json";
 
-  function baseOptions(): any {
-    return {
-      responsive: true,
-      maintainAspectRatio: false,
-      animation: { duration: 1200, easing: "easeOutQuart" as const },
-      plugins: {
-        legend: {
-          display: window.innerWidth > 640,
-          labels: { color: "#e0e0e0", font: { size: 12 }, boxWidth: 12, padding: 20 },
-        },
-        tooltip: {
-          backgroundColor: "#1a1a1a",
-          titleColor: "#fff",
-          bodyColor: "#e0e0e0",
-          borderColor: "#333",
-          borderWidth: 1,
-          cornerRadius: 8,
-          padding: 12,
-        },
-      },
-    };
-  }
-
-  function gridStyle(): any {
-    return {
-      ticks: { color: "#666", font: { size: 11 } },
-      grid: { color: "#1a1a1a" },
-    };
-  }
-
-  function lineOptions(yTitle: string): any {
-    return {
-      ...baseOptions(),
-      scales: {
-        x: gridStyle(),
-        y: {
-          ...gridStyle(),
-          title: { display: true, text: yTitle, color: "#888" },
-        },
-      },
-    };
-  }
-
-  function lineDataset(ds: any, fill = true) {
-    return {
-      label: ds.label,
-      data: ds.data,
-      borderColor: ds.color,
-      backgroundColor: ds.color + (fill ? "15" : "00"),
-      fill,
-      tension: 0.3,
-      pointRadius: 3,
-      pointHoverRadius: 6,
-      borderWidth: 2.5,
-    };
-  }
-
-  function groupedBarOptions(yTitle: string): any {
-    return {
-      ...baseOptions(),
-      scales: {
-        x: gridStyle(),
-        y: {
-          ...gridStyle(),
-          title: { display: true, text: yTitle, color: "#888" },
-        },
-      },
-    };
-  }
+  import { baseOptions, gridStyle, lineOptions, lineDataset, groupedBarOptions } from "../lib/chart-helpers";
 
   const chartConfigs: Record<string, () => ConstructorParameters<typeof Chart>> = {
     "kupni-sila": () => {
@@ -852,6 +831,42 @@ import wageRealityData from "../data/wage-reality.json";
           datasets: corruptionData.datasets.map(ds => lineDataset(ds)),
         },
         options: lineOptions("CPI (0–100)"),
+      }];
+    },
+
+    "volby-vek": () => {
+      const ctx = document.getElementById("chart-volby-vek") as HTMLCanvasElement;
+      return [ctx, {
+        type: "bar",
+        data: {
+          labels: votingData.labels,
+          datasets: votingData.datasets.map(ds => ({
+            label: ds.label,
+            data: ds.data,
+            backgroundColor: ds.color + "cc",
+            borderColor: ds.color,
+            borderWidth: 1,
+          })),
+        },
+        options: {
+          ...baseOptions(),
+          scales: {
+            x: { ...gridStyle(), stacked: true },
+            y: {
+              ...gridStyle(),
+              stacked: true,
+              title: { display: true, text: "% voličů", color: "#888" },
+              max: 100,
+            },
+          },
+          plugins: {
+            ...baseOptions().plugins,
+            tooltip: {
+              ...baseOptions().plugins.tooltip,
+              callbacks: { label: (c: any) => `${c.dataset.label}: ${c.raw} %` },
+            },
+          },
+        },
       }];
     },
   };
