@@ -1,5 +1,7 @@
 # WTF Česko
 
+**[→ Živá verze](https://sgtmarmite.github.io/wtfcesko/)**
+
 Scrollytelling web o české ekonomice. Grafy, co mluví za vše.
 
 Astro 5, Tailwind CSS v4, Chart.js.
