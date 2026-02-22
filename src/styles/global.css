@@ -37,3 +37,9 @@ body {
 canvas {
   max-width: 100%;
 }
+
+@media (max-width: 640px) {
+  body {
+    padding-bottom: 3.5rem;
+  }
+}

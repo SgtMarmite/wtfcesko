@@ -1,0 +1,52 @@
+---
+import ChartSection from "../ChartSection.astro";
+import ActDivider from "../ActDivider.astro";
+
+import demoData from "../../data/demographics.json";
+import healthData from "../../data/healthcare.json";
+import pensionData from "../../data/pensions-vs-wages.json";
+import pensionSpendData from "../../data/pension-spending.json";
+---
+
+<ActDivider
+  id="akt-3"
+  number="03"
+  title="Důsledky"
+  subtitle="Nemůžeš bydlet, nemůžeš šetřit. Co se děje dál?"
+/>
+
+<ChartSection
+  id="demografie"
+  title="Děti se nerodí"
+  description="Když nemůžete bydlet a peníze sotva stačí, kdo bude mít děti? Celá V4 je pod hranicí prosté reprodukce — ale Česko a Polsko klesly nejrychleji. Populace stárne v celém regionu."
+  accentColor="#6c5ce7"
+  source={demoData.source.name}
+  sourceUrl={demoData.source.url}
+/>
+
+<ChartSection
+  id="zdravotnictvi"
+  title="Lékaři stárnou rychleji než&nbsp;pacienti"
+  description="340 tisíc lidí nemá praktického lékaře. Průměrný věk PL přesahuje 55 let, téměř 40 % je nad šedesát. Kdo bude léčit stárnoucí populaci, když se lékaři sami blíží důchodu?"
+  accentColor="#ff8c42"
+  source={healthData.source.name}
+  sourceUrl={healthData.source.url}
+/>
+
+<ChartSection
+  id="duchody"
+  title="Důchod? Závisí na&nbsp;valorizacích"
+  description="Poměr průměrného důchodu k mzdě se drží kolem 40–45 %. Ale bez politických valorizací by klesal — a každá valorizace zatěžuje rozpočet víc."
+  accentColor="#ff8c42"
+  source={pensionData.source.name}
+  sourceUrl={pensionData.source.url}
+/>
+
+<ChartSection
+  id="vydaje-duchody"
+  title="Důchody nás stojí stále&nbsp;víc"
+  description="Výdaje na důchody jako podíl HDP stagnují kolem 8 %, ale populace 65+ roste. Méně dětí dnes = méně daní zítra = neudržitelný systém."
+  accentColor="#6c5ce7"
+  source={pensionSpendData.source.name}
+  sourceUrl={pensionSpendData.source.url}
+/>

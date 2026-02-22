@@ -1,0 +1,71 @@
+---
+import ChartSection from "../ChartSection.astro";
+import ActDivider from "../ActDivider.astro";
+import CalloutFood from "../CalloutFood.astro";
+
+import foodData from "../../data/food-prices.json";
+import energyData from "../../data/energy-prices.json";
+import housingData from "../../data/housing-affordability.json";
+import rentData from "../../data/rent-vs-wages.json";
+import constructionData from "../../data/housing-construction.json";
+---
+
+<ActDivider
+  id="akt-2"
+  number="02"
+  title="Co si za to koupíš"
+  subtitle="Máš 60 % výplaty. Tady je, co s ní dokážeš."
+/>
+
+<ChartSection
+  id="potraviny"
+  title="Za jídlo dáváme víc než&nbsp;Západ"
+  description={
+    "Česká domácnost utratí za potraviny 16 % výdajů — v Německu je to 11 %, v Rakousku 10 %. "
+    + "Není to jen <a href='https://en.wikipedia.org/wiki/Engel%27s_law' target='_blank' "
+    + "rel='noopener noreferrer' class='underline hover:text-text transition-colors'>"
+    + "Engellův zákon</a> (nižší příjmy → víc za jídlo). Ceny potravin konvergovaly "
+    + "k EU rychleji než mzdy."
+  }
+  accentColor="#ff3e3e"
+  source={foodData.source.name}
+  sourceUrl={foodData.source.url}
+/>
+
+<CalloutFood />
+
+<ChartSection
+  id="energie"
+  title="Elektřina: vyrábíme, ale&nbsp;platíme"
+  description="Česko má vlastní jaderné i uhelné zdroje, přesto platíme víc než Polsko nebo Slovensko. Cenu určuje evropská burza, ne domácí výroba — a při našich mzdách to bolí víc než v Německu."
+  accentColor="#ffd93d"
+  source={energyData.source.name}
+  sourceUrl={energyData.source.url}
+/>
+
+<ChartSection
+  id="bydleni"
+  title="Ceny bytů utíkají mzdám"
+  description="Od roku 1998 vzrostly ceny bytů za m² téměř 5×, ale mzdy jen 4×. Nůžky se rozevřely hlavně po roce 2015 — a Deloitte Property Index řadí Česko mezi nejméně dostupné trhy v Evropě (13 ročních platů na nový byt)."
+  accentColor="#ffd93d"
+  source={housingData.source.name}
+  sourceUrl={housingData.source.url}
+/>
+
+<ChartSection
+  id="najmy"
+  title="Půlka výplaty za&nbsp;nájem"
+  description="Podíl průměrného nájmu na čisté mzdě roste. V krajských městech dnes spolkne nájem přes 40 % čisté výplaty — a v Praze ještě víc. Vlastnit nemůžete, pronajímat nemůžete."
+  accentColor="#e056a0"
+  source={rentData.source.name}
+  sourceUrl={rentData.source.url}
+/>
+
+<ChartSection
+  id="vystavba"
+  title="Staví se málo, méně než&nbsp;dřív"
+  description="Počet zahájených i dokončených bytů je hluboko pod úrovní potřebnou k pokrytí poptávky. Stavební řízení trvá roky, kapacity chybí. Řešení je v nedohlednu."
+  accentColor="#00d4aa"
+  source={constructionData.source.name}
+  sourceUrl={constructionData.source.url}
+/>

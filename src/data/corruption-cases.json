@@ -1,0 +1,82 @@
+{
+  "title": "Velké korupční kauzy",
+  "description": "Přehled největších korupčních kauz s odhadovanou škodou. Zdroje: NÚKIB, policie ČR, Transparency International, média.",
+  "source": {
+    "name": "Transparency International CZ, policie ČR, investigativní média",
+    "url": "https://www.transparency.cz/"
+  },
+  "cases": [
+    {
+      "year": 2010,
+      "name": "ProMoPro / Vítkov",
+      "amount": 1500,
+      "unit": "mil. Kč",
+      "description": "Předražené IT zakázky MV ČR přes prostředníky.",
+      "category": "verejne-zakazky"
+    },
+    {
+      "year": 2012,
+      "name": "Pandur II",
+      "amount": 14700,
+      "unit": "mil. Kč",
+      "description": "Předražený nákup obrněných transportérů pro armádu.",
+      "category": "obrana"
+    },
+    {
+      "year": 2013,
+      "name": "Opencard",
+      "amount": 1800,
+      "unit": "mil. Kč",
+      "description": "Pražská jízdenka s uzamčeným dodavatelem a nekonečnými vícenáklady.",
+      "category": "verejne-zakazky"
+    },
+    {
+      "year": 2015,
+      "name": "ROP Severozápad",
+      "amount": 14000,
+      "unit": "mil. Kč",
+      "description": "Zneužití regionálních EU dotací. Odsouzení politici i úředníci.",
+      "category": "eu-dotace"
+    },
+    {
+      "year": 2016,
+      "name": "Čapí hnízdo",
+      "amount": 50,
+      "unit": "mil. Kč",
+      "description": "Dotační podvod na farmu Čapí hnízdo. Kauza dotáhla až k premiérovi.",
+      "category": "eu-dotace"
+    },
+    {
+      "year": 2019,
+      "name": "Lithium / ČEZ",
+      "amount": 2000,
+      "unit": "mil. Kč",
+      "description": "Podezření z předražených zakázek a vazeb na politiky.",
+      "category": "energie"
+    },
+    {
+      "year": 2020,
+      "name": "Kanál D–O–L",
+      "amount": 585000,
+      "unit": "mil. Kč",
+      "description": "Projekt kanálu Dunaj–Odra–Labe — rozpočet 585 mld Kč, sporný přínos.",
+      "category": "infrastruktura"
+    },
+    {
+      "year": 2022,
+      "name": "Dozimetr",
+      "amount": 400,
+      "unit": "mil. Kč",
+      "description": "Korupční síť na pražském dopravním podniku. Předražené zakázky.",
+      "category": "verejne-zakazky"
+    },
+    {
+      "year": 2023,
+      "name": "mýtný systém",
+      "amount": 19600,
+      "unit": "mil. Kč",
+      "description": "Předražený mýtný systém Kapsch — cena výrazně nad zahraničními srovnatelnými kontrakty.",
+      "category": "verejne-zakazky"
+    }
+  ]
+}

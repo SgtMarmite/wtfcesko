@@ -1,0 +1,77 @@
+---
+const acts = [
+  { id: "akt-1", label: "01 Iluze růstu" },
+  { id: "akt-2", label: "02 Co si koupíš" },
+  { id: "akt-3", label: "03 Důsledky" },
+  { id: "akt-4", label: "04 Stát nemá" },
+  { id: "akt-5", label: "05 Proč" },
+  { id: "akt-6", label: "06 Sliby" },
+];
+---
+
+<div id="progress-bar" class="fixed top-0 left-0 right-0 z-[60] opacity-0 transition-opacity duration-300">
+  <div class="h-0.5 bg-bg-elevated">
+    <div id="progress-fill" class="h-full bg-accent-red transition-[width] duration-150 ease-out" style="width: 0%"></div>
+  </div>
+  <div class="hidden md:flex justify-between px-6 max-w-7xl mx-auto">
+    {acts.map((act) => (
+      <a
+        href={`#${act.id}`}
+        class="progress-label text-[10px] text-text-muted/0 py-1 transition-all duration-300 hover:text-text"
+        data-act={act.id}
+      >
+        {act.label}
+      </a>
+    ))}
+  </div>
+</div>
+
+<script>
+  const bar = document.getElementById("progress-bar")!;
+  const fill = document.getElementById("progress-fill")!;
+  const labels = document.querySelectorAll<HTMLAnchorElement>(".progress-label");
+
+  const actElements = [
+    "akt-1", "akt-2", "akt-3", "akt-4", "akt-5", "akt-6",
+  ].map(id => document.getElementById(id)).filter(Boolean) as HTMLElement[];
+
+  let currentAct = "";
+
+  function update() {
+    const scrollY = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const pct = Math.min(100, (scrollY / docHeight) * 100);
+
+    fill.style.width = `${pct}%`;
+    bar.style.opacity = scrollY > 300 ? "1" : "0";
+
+    let activeAct = "";
+    for (let i = actElements.length - 1; i >= 0; i--) {
+      if (actElements[i].getBoundingClientRect().top <= 200) {
+        activeAct = actElements[i].id;
+        break;
+      }
+    }
+
+    if (activeAct !== currentAct) {
+      currentAct = activeAct;
+      labels.forEach(label => {
+        if (label.dataset.act === currentAct) {
+          label.classList.remove("text-text-muted/0");
+          label.classList.add("text-text-muted");
+        } else {
+          label.classList.add("text-text-muted/0");
+          label.classList.remove("text-text-muted");
+        }
+      });
+    }
+  }
+
+  let ticking = false;
+  window.addEventListener("scroll", () => {
+    if (!ticking) {
+      requestAnimationFrame(() => { update(); ticking = false; });
+      ticking = true;
+    }
+  });
+</script>

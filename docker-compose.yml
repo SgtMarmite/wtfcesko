@@ -9,4 +9,4 @@ services:
       context: .
       target: build
     working_dir: /app
-    command: npm run build
+    command: npm test
