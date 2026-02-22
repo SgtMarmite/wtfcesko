@@ -1,11 +1,14 @@
+const isMobile = () => window.innerWidth <= 640;
+
 export function baseOptions(): any {
+  const mobile = isMobile();
   return {
     responsive: true,
     maintainAspectRatio: false,
     animation: { duration: 1200, easing: "easeOutQuart" as const },
     plugins: {
       legend: {
-        display: window.innerWidth > 640,
+        display: !mobile,
         labels: { color: "#e0e0e0", font: { size: 12 }, boxWidth: 12, padding: 20 },
       },
       tooltip: {
@@ -15,15 +18,22 @@ export function baseOptions(): any {
         borderColor: "#333",
         borderWidth: 1,
         cornerRadius: 8,
-        padding: 12,
+        padding: mobile ? 8 : 12,
       },
     },
   };
 }
 
 export function gridStyle(): any {
+  const mobile = isMobile();
   return {
-    ticks: { color: "#666", font: { size: 11 } },
+    ticks: {
+      color: "#666",
+      font: { size: mobile ? 9 : 11 },
+      maxRotation: mobile ? 45 : 0,
+      autoSkip: true,
+      maxTicksLimit: mobile ? 8 : 20,
+    },
     grid: { color: "#1a1a1a" },
   };
 }
