@@ -30,14 +30,12 @@ const { id, title, description, accentColor = "#ff3e3e", source, sourceUrl } = A
       <div class="h-64 md:h-80 lg:h-96">
         <canvas id={`chart-${id}`}></canvas>
       </div>
-    </div>
-
-    <div class="mt-4 text-right">
       <a
         href={sourceUrl}
         target="_blank"
         rel="noopener noreferrer"
-        class="text-text-muted text-xs hover:text-text transition-colors duration-200"
+        class="block mt-4 pt-3 border-t border-border/50 text-text-muted/60 text-[10px] md:text-xs
+               hover:text-text-muted transition-colors duration-200"
       >
         Zdroj: {source} &nearr;
       </a>
