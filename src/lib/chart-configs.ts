@@ -176,18 +176,14 @@ export const chartConfigs: Record<string, () => ConstructorParameters<typeof Cha
     type: "line",
     data: {
       labels: demoData.labels,
-      datasets: [
-        lineDataset(demoData.datasets[0]),
-        {
-          label: demoData.datasets[1].label,
-          data: demoData.datasets[1].data,
-          borderColor: demoData.datasets[1].color,
-          borderDash: [8, 4],
-          borderWidth: 1.5,
-          pointRadius: 0,
-          fill: false,
-        },
-      ],
+      datasets: demoData.datasets.map((ds: any, i: number) => {
+        if (ds.label === "Hranice prosté reprodukce") {
+          return { label: ds.label, data: ds.data, borderColor: ds.color, borderDash: [8, 4], borderWidth: 1.5, pointRadius: 0, fill: false };
+        }
+        const base = lineDataset(ds, false);
+        if (i === 0) return { ...base, borderWidth: 3, pointRadius: 4 };
+        return { ...base, borderWidth: 1.5, pointRadius: 2 };
+      }),
     },
     options: lineOptions("Děti na ženu"),
   }],
