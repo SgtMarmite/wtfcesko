@@ -49,12 +49,54 @@ import votingData from "../data/voting-by-age.json";
 
     <ChartSection
       id="kupni-sila"
-      title="Platy rostou. Ale kupní síla?"
-      description="Od roku 1993 nominální mzdy vzrostly 6×. Ceny ale taky. Reálná kupní síla roste pomaleji, než si myslíte — a po roce 2020 se nůžky drasticky rozevřely."
-      accentColor="#00d4aa"
+      title="Platy rostou. Kupní síla ne."
+      description={
+        "Nominální mzdy vzrostly 7×. Zní to skvěle — ale bílá čára ukazuje realitu:"
+        + " reálná kupní síla jen 2,3×. A po roce 2021 dokonce klesá."
+      }
+      accentColor="#ffffff"
       source={inflationData.source.name}
       sourceUrl={inflationData.source.url}
     />
+
+    <div class="max-w-5xl mx-auto px-6 -mt-16 relative z-10">
+      <div class="bg-bg-card/60 backdrop-blur-sm border border-border rounded-xl px-5 py-5 max-w-2xl">
+        <p class="text-text-muted text-xs font-bold uppercase tracking-wider mb-3">
+          Pozor: CPI podhodnocuje bydlení
+        </p>
+        <div class="flex flex-col gap-3">
+          <div>
+            <div class="flex items-center justify-between mb-1">
+              <span class="text-text text-xs">Váha bydlení v CPI koši</span>
+              <span class="text-text text-xs font-bold">26 %</span>
+            </div>
+            <div class="h-3 bg-bg rounded-full overflow-hidden">
+              <div class="h-full bg-yellow-500/60 rounded-full" style="width: 26%"></div>
+            </div>
+          </div>
+          <div>
+            <div class="flex items-center justify-between mb-1">
+              <span class="text-text text-xs">Reálný podíl nájmu na výplatě</span>
+              <span class="text-accent-red text-xs font-bold">40 %+</span>
+            </div>
+            <div class="h-3 bg-bg rounded-full overflow-hidden">
+              <div class="h-full bg-accent-red/80 rounded-full" style="width: 42%"></div>
+            </div>
+          </div>
+        </div>
+        <p class="text-text-muted text-xs mt-3 leading-relaxed">
+          ČSÚ do „bydlení" počítá energie a imputované nájemné — ne tržní ceny bytů
+          ani hypotéky. Bílá čára výše je tedy <span class="text-text font-bold">optimistická</span>.
+          Skutečná ztráta kupní síly je vyšší.
+        </p>
+        <p class="text-text-muted text-xs mt-1">
+          Zdroj: <a href="https://csu.gov.cz/csu/czso/spotrebni_kos_archiv"
+            target="_blank" rel="noopener noreferrer"
+            class="text-text hover:text-accent-red transition-colors"
+          >ČSÚ — Spotřební koš 2024</a>
+        </p>
+      </div>
+    </div>
 
     <ChartSection
       id="mzdy-realita"
@@ -103,11 +145,56 @@ import votingData from "../data/voting-by-age.json";
     <ChartSection
       id="potraviny"
       title="Za jídlo dáváme víc než&nbsp;Západ"
-      description="Česká domácnost utratí za potraviny 16 % výdajů — v Německu je to 11 %, v Rakousku 10 %. <a href='https://en.wikipedia.org/wiki/Engel%27s_law' target='_blank' rel='noopener noreferrer' class='underline hover:text-text transition-colors'>Engellův zákon</a>: čím nižší příjmy, tím víc z nich spolkne jídlo."
+      description={
+        "Česká domácnost utratí za potraviny 16 % výdajů — v Německu je to 11 %, v Rakousku 10 %. "
+        + "Není to jen <a href='https://en.wikipedia.org/wiki/Engel%27s_law' target='_blank' "
+        + "rel='noopener noreferrer' class='underline hover:text-text transition-colors'>"
+        + "Engellův zákon</a> (nižší příjmy → víc za jídlo). Ceny potravin konvergovaly "
+        + "k EU rychleji než mzdy."
+      }
       accentColor="#ff3e3e"
       source={foodData.source.name}
       sourceUrl={foodData.source.url}
     />
+
+    <div class="max-w-5xl mx-auto px-6 -mt-16 relative z-10">
+      <div class="bg-bg-card/60 backdrop-blur-sm border border-border rounded-xl px-5 py-5 max-w-2xl">
+        <p class="text-text-muted text-xs font-bold uppercase tracking-wider mb-3">
+          Ceny konvergovaly, mzdy ne
+        </p>
+        <div class="flex flex-col gap-3">
+          <div>
+            <div class="flex items-center justify-between mb-1">
+              <span class="text-text text-xs">Ceny potravin v ČR (EU = 100)</span>
+              <span class="text-text text-xs font-bold">89</span>
+            </div>
+            <div class="h-3 bg-bg rounded-full overflow-hidden">
+              <div class="h-full bg-yellow-500/60 rounded-full" style="width: 89%"></div>
+            </div>
+          </div>
+          <div>
+            <div class="flex items-center justify-between mb-1">
+              <span class="text-text text-xs">Mzdy v ČR (EU = 100)</span>
+              <span class="text-accent-red text-xs font-bold">62</span>
+            </div>
+            <div class="h-3 bg-bg rounded-full overflow-hidden">
+              <div class="h-full bg-accent-red/80 rounded-full" style="width: 62%"></div>
+            </div>
+          </div>
+        </div>
+        <p class="text-text-muted text-xs mt-3 leading-relaxed">
+          Potraviny v Česku stojí 89 % EU průměru, ale mzdy jsou jen 62 %.
+          V Německu: potraviny 103 %, mzdy ~105 %. Němec za jídlo „platí" menší
+          kus výplaty, i když v absolutních cenách platí víc.
+        </p>
+        <p class="text-text-muted text-xs mt-1">
+          Zdroj: <a href="https://ec.europa.eu/eurostat/statistics-explained/index.php?title=Comparative_price_levels_for_food%2C_beverages_and_tobacco"
+            target="_blank" rel="noopener noreferrer"
+            class="text-text hover:text-accent-red transition-colors"
+          >Eurostat — Comparative price levels 2024</a>
+        </p>
+      </div>
+    </div>
 
     <ChartSection
       id="energie"
@@ -352,7 +439,13 @@ import votingData from "../data/voting-by-age.json";
         type: "line",
         data: {
           labels: inflationData.labels,
-          datasets: inflationData.datasets.map(ds => lineDataset(ds)),
+          datasets: inflationData.datasets.map(ds => {
+            const base = lineDataset(ds, false);
+            if (ds.label === "Reálná kupní síla") {
+              return { ...base, borderWidth: 3.5, pointRadius: 4, borderDash: [] };
+            }
+            return { ...base, borderWidth: 1.5, borderDash: [6, 3], pointRadius: 2 };
+          }),
         },
         options: lineOptions("Index (1993 = 100)"),
       }];
