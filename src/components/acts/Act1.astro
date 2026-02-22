@@ -1,0 +1,68 @@
+---
+import ChartSection from "../ChartSection.astro";
+import ActDivider from "../ActDivider.astro";
+import CalloutCpi from "../CalloutCpi.astro";
+
+import inflationData from "../../data/inflation-vs-wages.json";
+import wageRealityData from "../../data/wage-reality.json";
+import gdpWagesData from "../../data/gdp-vs-wages.json";
+import laborTaxData from "../../data/labor-tax-breakdown.json";
+import taxData from "../../data/tax-burden.json";
+---
+
+<ActDivider
+  id="akt-1"
+  number="01"
+  title="Iluze růstu"
+  subtitle="Mzdy rostou 30 let. Tak proč si nemůžete dovolit víc?"
+/>
+
+<ChartSection
+  id="kupni-sila"
+  title="Platy rostou. Kupní síla ne."
+  description={
+    "Nominální mzdy vzrostly 7×. Zní to skvěle — ale bílá čára ukazuje realitu:"
+    + " reálná kupní síla jen 2,3×. A po roce 2021 dokonce klesá."
+  }
+  accentColor="#ffffff"
+  source={inflationData.source.name}
+  sourceUrl={inflationData.source.url}
+/>
+
+<CalloutCpi />
+
+<ChartSection
+  id="mzdy-realita"
+  title="ALE: průměrná mzda je&nbsp;iluze"
+  description="Dva ze tří zaměstnanců berou méně než průměr. Medián — mzda, pod kterou je polovina lidí — je o 7 500 Kč nižší. A Praha s 60 tisíci táhne celou statistiku nahoru."
+  accentColor="#ff3e3e"
+  source={wageRealityData.source.name}
+  sourceUrl={wageRealityData.source.url}
+/>
+
+<ChartSection
+  id="hdp-vs-mzdy"
+  title="Vyděláváme pod svou&nbsp;cenou"
+  description="Česko má HDP na úrovni 84 % průměru EU — ale mzdy jen 62 %. Vyrábíme skoro jako západ, platí nám jako východ. Kam mizí ten rozdíl?"
+  accentColor="#ff3e3e"
+  source={gdpWagesData.source.name}
+  sourceUrl={gdpWagesData.source.url}
+/>
+
+<ChartSection
+  id="zdaneni-prace"
+  title="Kam mizí vaše&nbsp;peníze"
+  description="Z každých 61 769 Kč, co zaměstnavatel zaplatí, dostane pracovník na účet jen 36 454 Kč. Zbytek — 41 % — spolknou odvody a daně. Částečná odpověď na ten rozdíl."
+  accentColor="#00d4aa"
+  source={laborTaxData.source.name}
+  sourceUrl={laborTaxData.source.url}
+/>
+
+<ChartSection
+  id="dane"
+  title="Z výplaty vám zůstane sotva&nbsp;polovina"
+  description="Česko má vyšší daňové zatížení práce než průměr OECD. Z každé koruny, co zaměstnavatel zaplatí, dostane zaměstnanec jen ~60 %. A nejsme v tom sami — ale patříme k těm horším."
+  accentColor="#ff3e3e"
+  source={taxData.source.name}
+  sourceUrl={taxData.source.url}
+/>

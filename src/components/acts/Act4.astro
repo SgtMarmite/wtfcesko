@@ -1,0 +1,42 @@
+---
+import ChartSection from "../ChartSection.astro";
+import ActDivider from "../ActDivider.astro";
+
+import debtData from "../../data/government-debt.json";
+import debtServiceData from "../../data/debt-servicing.json";
+import taxTimeData from "../../data/tax-burden-time.json";
+---
+
+<ActDivider
+  id="akt-4"
+  number="04"
+  title="Stát na to nemá"
+  subtitle="Kdo to zaplatí? Stát, co sám dluží biliony?"
+/>
+
+<ChartSection
+  id="statni-dluh"
+  title="Dluh, co roste rychleji než&nbsp;ekonomika"
+  description="Státní dluh překročil 3,1 bilionu Kč. Na každého Čecha — včetně kojenců — připadá přes 286 000 Kč dluhu. A tempo se zrychluje."
+  accentColor="#00b4d8"
+  source={debtData.source.name}
+  sourceUrl={debtData.source.url}
+/>
+
+<ChartSection
+  id="obsluha-dluhu"
+  title="Úroky z&nbsp;dluhu letí nahoru"
+  description="Náklady na obsluhu státního dluhu se po letech nízkých sazeb vrátily. V roce 2024 stát zaplatil přes 88 miliard Kč jen na úrocích — peníze, které mohly jít do škol nebo nemocnic."
+  accentColor="#00b4d8"
+  source={debtServiceData.source.name}
+  sourceUrl={debtServiceData.source.url}
+/>
+
+<ChartSection
+  id="dane-cas"
+  title="Daně: vždycky nad&nbsp;průměrem"
+  description="Česko má konzistentně vyšší daňové zatížení práce než průměr OECD. I po snížení v posledních letech zůstáváme nad průměrem. Vysoké daně, ale veřejné služby na úrovni?"
+  accentColor="#ffd93d"
+  source={taxTimeData.source.name}
+  sourceUrl={taxTimeData.source.url}
+/>

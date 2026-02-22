@@ -1,0 +1,87 @@
+---
+import ChartSection from "../ChartSection.astro";
+import ActDivider from "../ActDivider.astro";
+import PoliticianQuote from "../PoliticianQuote.astro";
+
+import productivityData from "../../data/productivity.json";
+import educationData from "../../data/education-spending.json";
+import rdData from "../../data/rd-spending.json";
+import corruptionData from "../../data/corruption-digital.json";
+import votingData from "../../data/voting-by-age.json";
+---
+
+<ActDivider
+  id="akt-5"
+  number="05"
+  title="Proč se nic nemění"
+  subtitle="Proč jsme tady? A co nás drží na místě?"
+/>
+
+<ChartSection
+  id="produktivita"
+  title="Produktivita roste pomalu"
+  description="Česko vyrábí za hodinu práce méně než průměr EU. Polsko nás dotahuje. Bez růstu produktivity nebudou růst ani mzdy — to je ta skutečná brzda."
+  accentColor="#ff3e3e"
+  source={productivityData.source.name}
+  sourceUrl={productivityData.source.url}
+/>
+
+<ChartSection
+  id="skolstvi"
+  title="Na školství se&nbsp;šetří"
+  description="Investice do vzdělání jsou pod průměrem OECD. Učitelé berou méně než průměrná mzda. Kdo bude učit budoucí generace, když se na vzdělávání šetří?"
+  accentColor="#6c5ce7"
+  source={educationData.source.name}
+  sourceUrl={educationData.source.url}
+/>
+<PoliticianQuote
+  promise="Platy učitelů na 130 % průměrné mzdy"
+  author="Petr Fiala"
+  source="Programové prohlášení, 2022"
+  verdict="poruseno"
+  reality="Platy učitelů zmrazeny. Cíl 130 % nedosažen."
+/>
+
+<ChartSection
+  id="vyzkum"
+  title="Výzkum zaostává za&nbsp;lídry"
+  description="Výdaje na R&D rostou, ale stále nedosahují průměru EU. Za inovačními lídry jako Švédsko nebo Rakousko zaostáváme o celý procentní bod HDP. Bez výzkumu není inovace, bez inovace není produktivita."
+  accentColor="#00b4d8"
+  source={rdData.source.name}
+  sourceUrl={rdData.source.url}
+/>
+<PoliticianQuote
+  promise="Podpora inovací a výzkumu"
+  author="Petr Fiala"
+  source="Programové prohlášení, 2022"
+  verdict="poruseno"
+  reality="Výdaje na R&D stále pod průměrem EU. Konkrétní opatření nepřijata."
+/>
+
+<ChartSection
+  id="korupce-digital"
+  title="Korupce brzdí&nbsp;změnu"
+  description="CPI stagnuje kolem 55 bodů — hluboko pod Německem i průměrem EU. Méně důvěry ve stát = méně ochoty platit daně = méně peněz na investice. Kruh se uzavírá."
+  accentColor="#ff3e3e"
+  source={corruptionData.source.name}
+  sourceUrl={corruptionData.source.url}
+/>
+<PoliticianQuote
+  promise="Odpolitizování státní správy"
+  author="Andrej Babiš"
+  source="Programové prohlášení, 2018"
+  verdict="poruseno"
+  reality="Zákon o úřednících nepřijat. Politické nominace pokračují."
+/>
+
+<ChartSection
+  id="volby-vek"
+  title="Důchodci volí jinak než&nbsp;mladí"
+  description={
+    "47 % důchodců volilo ANO. Koalice vyhrály u mladých, ale senioři"
+    + " — nejdisciplinovanější voliči s nejvyšší účastí — drží status quo."
+  }
+  accentColor="#3b82f6"
+  source={votingData.source.name}
+  sourceUrl={votingData.source.url}
+/>
